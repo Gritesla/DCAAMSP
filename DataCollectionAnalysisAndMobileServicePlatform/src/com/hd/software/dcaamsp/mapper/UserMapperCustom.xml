@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.UserMapperCustom">
+
+	<!-- 定义SQL片段 -->
+	<sql id="findUserByLoginName_where">
+
+		<!-- 使用动态SQL -->
+
+		<if test="userCustom!=null">
+			<if test="userCustom.LoginName=null and userCustom.LoginName=''">
+
+				WHERE user.LoginName ='${userCustom.loginname}'
+			</if>
+		</if>
+	</sql>
+
+	<!--parameterType传入包装对象 -->
+	<select id="findUserByLoginName" parameterType="com.hd.software.dcaamsp.po.UserQueryVo"
+		resultType="com.hd.software.dcaamsp.po.UserCustom">
+		SELECT * FROM user
+
+		<where>
+			<include refid="findUserByLoginName_where"></include>
+		</where>
+
+	</select>
+</mapper>
