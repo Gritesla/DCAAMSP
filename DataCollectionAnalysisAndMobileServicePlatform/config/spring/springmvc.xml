@@ -14,13 +14,44 @@
                         http://www.springframework.org/schema/tx 
                         http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
 
+
+	<!-- 组建扫描 指定要扫描的包名 -->
+	<context:component-scan base-package="com.hd.software.dcaamsp.controller"></context:component-scan>
+
+	<!-- 静态资源的解析 js/css/img -->
+	<mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
+
+	<!-- 代替上述所有配置 -->
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<!-- 解决POST请求返回值乱码问题 -->
+				<constructor-arg value="UTF-8" />
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 视图解析器 唯一不变的 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- shiro缓存 -->
+	<!-- <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"> 
+		<property name="configLocation" value="classpath:${ehcache.file}"></property> 
+		</bean> -->
+
+
+	<!-- 拦截器 使用shiro后该部分不需要了 <mvc:interceptors> 多个拦截器顺序执行 <mvc:interceptor> 
+		拦截所有URL 包括子URL <mvc:mapping path="/**" /> <bean class="com.hd.software.dcaamsp.interceptor.LoginInterceptor" 
+		/> </mvc:interceptor> </mvc:interceptors> -->
+
 	<!-- 配置Handler -->
 	<!-- <bean name="/login.action" class="com.hd.software.dcaamsp.controller.LoginController" 
 		/> -->
 	<!-- <bean id="loginController" class="com.hd.software.dcaamsp.controller.LoginController"></bean> -->
-
-	<!-- 组建扫描 指定要扫描的包名 -->
-	<context:component-scan base-package="com.hd.software.dcaamsp.controller"></context:component-scan>
 
 	<!-- 处理器映射器 -->
 	<!-- 非注解的 -->
@@ -41,10 +72,5 @@
 	<!-- 注解的 -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean> -->
 
-	<!-- 代替上述所有配置 -->
-	<mvc:annotation-driven></mvc:annotation-driven>
 
-	<!-- 视图解析器 唯一不变的 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
 </beans>

@@ -4,12 +4,9 @@
 
 	<!-- 定义SQL片段 -->
 	<sql id="findUserByLoginName_where">
-
 		<!-- 使用动态SQL -->
-
 		<if test="userCustom!=null">
 			<if test="userCustom.LoginName=null and userCustom.LoginName=''">
-
 				WHERE user.LoginName ='${userCustom.loginname}'
 			</if>
 		</if>
@@ -23,6 +20,15 @@
 		<where>
 			<include refid="findUserByLoginName_where"></include>
 		</where>
+
+	</select>
+
+
+
+	<select id="validateLogin" parameterType="com.hd.software.dcaamsp.po.UserQueryVo"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) ResultCount FROM user WHERE user.LoginName
+		='${userCustom.loginname}' AND user.Password ='${userCustom.password}'
 
 	</select>
 </mapper>

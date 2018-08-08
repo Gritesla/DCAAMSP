@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                        http://www.springframework.org/schema/beans/spring-beans.xsd   
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+                        http://www.springframework.org/schema/mvc 
+                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+                        http://www.springframework.org/schema/tx 
+                        http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	<!-- 需要配置 1.web.xml中shiro的filter对应的Bean 2.SecurityManager 3.自定义的realm -->
+
+	<!-- web.xml中shiro的filter对应的Bean -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager"></property>
+		<property name="loginUrl" value="/login"></property>
+		<property name="unauthorizedUrl" value="/refuse.jsp"></property>
+		<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最下面 -->
+		<property name="filterChainDefinitions">
+
+
+			<value>
+				<!-- 对静态资源放行 -->
+				/js/** = anon
+				/img/** = anon
+				/css/** = anon
+				<!-- 请求这个地址Shiro会清楚session -->
+				/logout = logout
+				/index.jsp = anon
+				<!--所有页面都要认证 -->
+				/**=authc
+
+				<!-- /**=anon -->
+
+			</value>
+		</property>
+	</bean>
+
+	<!-- SecurityManager安全管理器 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="customRealm"></property>
+	</bean>
+
+	<!-- 自定义的realm -->
+	<bean id="customRealm" class="com.hd.software.dcaamsp.shiro.CustomRealm" />
+
+</beans>
