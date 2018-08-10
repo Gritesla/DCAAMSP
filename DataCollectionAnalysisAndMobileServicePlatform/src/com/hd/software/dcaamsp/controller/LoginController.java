@@ -30,16 +30,18 @@ public class LoginController {
 	@RequestMapping(value = "/login")
 	public String pcLogin(HttpServletRequest req) throws Exception {
 		// 如果登录失败从request中获取认证异常信息，就是shiro异常类的全名称
-		String shiroLoginFailure = req.getParameter("shiroLoginFailure");
+		String shiroLoginFailure = (String) req.getAttribute("shiroLoginFailure");
 
-		if (UnknownAccountException.class.getName().equals(shiroLoginFailure)) {
-			System.out.println("账号不存在");
-		} else if (IncorrectCredentialsException.class.getName().equals(
-				shiroLoginFailure)) {
-			System.out.println("用户名或密码错误");
-		} else {
-			System.out.println("未知错误");
-		}
+		if (shiroLoginFailure != null)
+			if (UnknownAccountException.class.getName().equals(
+					shiroLoginFailure)) {
+				System.out.println("账号不存在");
+			} else if (IncorrectCredentialsException.class.getName().equals(
+					shiroLoginFailure)) {
+				System.out.println("用户名或密码错误");
+			} else {
+				System.out.println("未知错误");
+			}
 		// 认证成功的部分在Shiro中处理，shiro处理完会回到上一个请求路径
 		// 登录失败回到login
 		return "login";

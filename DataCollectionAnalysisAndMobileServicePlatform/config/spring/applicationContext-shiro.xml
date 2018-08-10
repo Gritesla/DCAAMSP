@@ -19,6 +19,7 @@
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<property name="loginUrl" value="/login"></property>
+		<property name="successUrl" value="/main" />
 		<property name="unauthorizedUrl" value="/refuse.jsp"></property>
 		<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最下面 -->
 		<property name="filterChainDefinitions">
@@ -26,14 +27,19 @@
 
 			<value>
 				<!-- 对静态资源放行 -->
+				/comp/** = anon
 				/js/** = anon
 				/img/** = anon
 				/css/** = anon
+
+				<!-- 需要放行的页面 -->
+				<!-- /login=anon -->
+				/main = user
 				<!-- 请求这个地址Shiro会清楚session -->
 				/logout = logout
 				/index.jsp = anon
-				<!--所有页面都要认证 -->
-				/**=authc
+				<!--所有页面都要认证  /**=authc-->
+				
 
 				<!-- /**=anon -->
 
