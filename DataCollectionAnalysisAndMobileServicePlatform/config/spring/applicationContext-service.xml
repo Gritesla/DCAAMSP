@@ -17,4 +17,7 @@
 
 	<!-- 配置Service -->
 	<bean id="userService" class="com.hd.software.dcaamsp.service.impl.UserServiceImpl"></bean>
+
+	<!-- 认证和授权的service -->
+	<bean id="sysService" class="com.hd.software.dcaamsp.service.impl.SysServiceImpl"></bean>
 </beans>

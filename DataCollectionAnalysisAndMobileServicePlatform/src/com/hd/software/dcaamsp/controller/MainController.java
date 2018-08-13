@@ -8,9 +8,17 @@ public class MainController {
 
 	@RequestMapping(value = "/main")
 	public String main() throws Exception {
-
 		// 返回主页面
 		return "main";
 	}
 
+	@RequestMapping(value = "/statistics")
+	public String statistics() {
+		return "content/statistics";
+	}
+
+	@RequestMapping(value = "/userList")
+	public String userList() {
+		return "content/user-list";
+	}
 }

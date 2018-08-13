@@ -17,42 +17,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="renderer" content="webkit">
 <meta http-equiv="Cache-Control" content="no-siteapp" />
-<link rel="icon" type="image/png" href="comp/amazeui/i/app-icon72x72@2x.png">
-<link rel="apple-touch-icon-precomposed"
-	href="comp/amazeui/i/app-icon72x72@2x.png">
-<!-- <meta name="apple-mobile-web-app-title" content="Amaze UI" /> -->
-<link rel="stylesheet" href="comp/amazeui/css/amazeui.min.css" />
-<link rel="stylesheet" href="comp/amazeui/css/amazeui.datatables.min.css" />
-<link rel="stylesheet" href="comp/amazeui/css/app.css">
+<link rel="stylesheet" href="ass/amazeui/css/amazeui.min.css" />
+<link rel="stylesheet" href="ass/amazeui/css/amazeui.datatables.min.css" />
+<link rel="stylesheet" href="ass/amazeui/css/app.css">
+<link rel="stylesheet" href="css/pages/login.css">
 <script src="js/common/jquery-1.9.1.js"></script>
-<script src="comp/amazeui/js/theme.js"></script>
-<script src="comp/amazeui/js/amazeui.min.js"></script>
-<script src="comp/amazeui/js/app.js"></script>
-<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-
 </head>
-
-<!-- <body>
-	<form action="login" method="post">
-		<table>
-			<tr>
-				<td>用户名：</td>
-				<td><input name="username" type="text" value="admin" /></td>
-			</tr>
-			<tr>
-				<td>密码：</td>
-				<td><input name="password" type="password" value="admin" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" value="登录" /></td>
-				<td><input type="button" value="取消" /></td>
-			</tr>
-		</table>
-	</form>
-</body> -->
 <body data-type="login">
+	<script src="ass/amazeui/js/theme.js"></script>
 	<div class="am-g tpl-g">
 		<!-- 风格切换 -->
 		<div class="tpl-skiner">
@@ -68,28 +40,33 @@
 		<div class="tpl-login">
 			<div class="tpl-login-content">
 				<div class="tpl-login-logo"></div>
-				<form class="am-form tpl-form-line-form">
+				<div class="login-logo-title">
+					<label>云数据服务平台</label>
+				</div>
+				<form class="am-form tpl-form-line-form" action="login"
+					method="post">
 					<div class="am-form-group">
-						<input type="text" class="tpl-form-input" id="user-name"
-							placeholder="请输入账号">
+						<input type="text" class="tpl-form-input" id="username"
+							name="username" placeholder="请输入账号">
 					</div>
 					<div class="am-form-group">
-						<input type="password" class="tpl-form-input" id="user-name"
-							placeholder="请输入密码">
+						<input type="password" class="tpl-form-input" id="password"
+							name="password" placeholder="请输入密码">
 					</div>
 					<div class="am-form-group tpl-login-remember-me">
 						<input id="remember-me" type="checkbox"> <label
 							for="remember-me"> 记住密码 </label>
 					</div>
 					<div class="am-form-group">
-						<button type="button"
-							class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">提交</button>
+						<input type="submit"
+							class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn"
+							value="登录">
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-
-
+	<script src="ass/amazeui/js/amazeui.min.js"></script>
+	<script src="ass/amazeui/js/app.js"></script>
 </body>
 </html>

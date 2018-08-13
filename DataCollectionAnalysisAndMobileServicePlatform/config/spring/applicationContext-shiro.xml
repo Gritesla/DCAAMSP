@@ -6,28 +6,30 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans 
                         http://www.springframework.org/schema/beans/spring-beans.xsd   
                         http://www.springframework.org/schema/context 
-                        http://www.springframework.org/schema/context/spring-context-4.2.xsd  
+                        http://www.springframework.org/schema/context/spring-context-3.2.xsd  
                         http://www.springframework.org/schema/mvc 
-                        http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+                        http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
                         http://www.springframework.org/schema/aop 
-                        http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+                        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd 
                         http://www.springframework.org/schema/tx 
-                        http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+                        http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
 	<!-- 需要配置 1.web.xml中shiro的filter对应的Bean 2.SecurityManager 3.自定义的realm -->
 
 	<!-- web.xml中shiro的filter对应的Bean -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager"></property>
 		<property name="loginUrl" value="/login"></property>
+		<!-- 认证成功统一跳转到first.action，建议不配置，shiro认证成功自动到上一个请求路径 -->
 		<property name="successUrl" value="/main" />
-		<property name="unauthorizedUrl" value="/refuse.jsp"></property>
+		<!-- 通过unauthorizedUrl指定没有权限操作时跳转页面 -->
+		<property name="unauthorizedUrl" value="/refuse" />
 		<!-- 过滤链定义，从上向下顺序执行，一般将/**放在最下面 -->
 		<property name="filterChainDefinitions">
 
 
 			<value>
 				<!-- 对静态资源放行 -->
-				/comp/** = anon
+				/ass/** = anon
 				/js/** = anon
 				/img/** = anon
 				/css/** = anon
@@ -38,8 +40,8 @@
 				<!-- 请求这个地址Shiro会清楚session -->
 				/logout = logout
 				/index.jsp = anon
-				<!--所有页面都要认证  /**=authc-->
-				
+				<!--所有页面都要认证 -->
+				/**=authc
 
 				<!-- /**=anon -->
 
@@ -50,9 +52,28 @@
 	<!-- SecurityManager安全管理器 -->
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="customRealm"></property>
+		<!-- 注入缓存管理器 -->
+		<property name="cacheManager" ref="cacheManager" />
 	</bean>
 
-	<!-- 自定义的realm -->
-	<bean id="customRealm" class="com.hd.software.dcaamsp.shiro.CustomRealm" />
+	<!-- 缓存管理器 -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml" />
 
+	</bean>
+
+
+	<!-- 自定义的realm -->
+	<bean id="customRealm" class="com.hd.software.dcaamsp.shiro.CustomRealm">
+		<!-- 将凭证匹配器设置到realm中，realm按照凭证匹配器的要求进行散列 -->
+		<property name="credentialsMatcher" ref="credentialsMatcher" />
+	</bean>
+
+
+	<!-- 凭证匹配器 -->
+	<bean id="credentialsMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="md5" />
+		<property name="hashIterations" value="1" />
+	</bean>
 </beans>

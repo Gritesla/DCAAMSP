@@ -1,3 +1,3 @@
 eclipse.preferences.version=1
-validator.Checked=WebRoot/assets/amazeui/js,WebRoot/js/amazeui/js,WebRoot/ui/amazeui/js/amazeui.min.js,WebRoot/ui/amazeui/js/echarts.min.js,WebRoot/comp,WebRoot/amazeui/js,WebRoot/ui/amazeui/js/jquery.min.js,WebRoot/ui/amazeui/js/amazeui.datatables.min.js
+validator.Checked=WebRoot/js/amazeui/js,WebRoot/ui/amazeui/js/echarts.min.js,WebRoot/ui/amazeui/js/amazeui.min.js,WebRoot/com,WebRoot/ass,WebRoot/amazeui/js,WebRoot/comp,WebRoot/assets,WebRoot/ui/amazeui/js/amazeui.datatables.min.js,WebRoot/ui/amazeui/js/jquery.min.js
 validator.Unchecked=

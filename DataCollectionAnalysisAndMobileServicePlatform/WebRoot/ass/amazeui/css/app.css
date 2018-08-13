@@ -599,7 +599,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   width: 100%;
 }
 .tpl-login-logo {
-  max-width: 159px;
+  max-width: 205px;
   height: 205px;
   margin: 0 auto;
   margin-bottom: 20px;
@@ -727,7 +727,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   padding: 6px 0;
 }
 .theme-white .tpl-login-logo {
-  background: url(../img/logoa.png) center no-repeat;/DataCollectionAnalysisAndMobileServicePlatform/WebRoot/js/amazeui/img/logoa.png
+  background: url(../img/logoa.png) center no-repeat;
 }
 .theme-white .sub-active {
   color: #23abf0!important;
@@ -1123,6 +1123,43 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   color: #ffffff;
   min-height: 174px;
 }
+
+.theme-white .widget-red {
+  padding: 12px 17px;
+  border: 1px solid #FF4500;
+  border-top: 2px solid #FF4500;
+  background: #FF4500;
+  color: #ffffff;
+  min-height: 174px;
+}
+
+.theme-white .widget-white {
+  padding: 12px 17px;
+  border: 1px solid #FFFFFF;
+  border-top: 2px solid #FFFFFF;
+  background: #FFFFFF;
+  color: #ffffff;
+  min-height: 174px;
+}
+
+.theme-white .widget-yellow {
+  padding: 12px 17px;
+  border: 1px solid #EEEE00;
+  border-top: 2px solid #EEEE00;
+  background: #EEEE00;
+  color: #ffffff;
+  min-height: 174px;
+}
+
+.theme-white .widget-blue {
+  padding: 12px 17px;
+  border: 1px solid #1C86EE;
+  border-top: 2px solid #1C86EE;
+  background: #1C86EE;
+  color: #ffffff;
+  min-height: 174px;
+}
+
 .theme-white .widget-purple .widget-statistic-icon {
   color: #9956b5;
 }
