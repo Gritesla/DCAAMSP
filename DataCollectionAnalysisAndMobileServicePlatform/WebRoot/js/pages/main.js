@@ -1,32 +1,12 @@
 var mainHeight = 1100;
 $(function() {
-	// 读取body data-type 判断是哪个页面然后执行相应页面方法，方法在下面。
-	/*
-	 * var dataType = $('body').attr('data-type'); console.log(dataType); for
-	 * (key in pageData) { if (key == dataType) { pageData[key](); } }
-	 */
-	// // 判断用户是否已有自己选择的模板风格
-	// if(storageLoad('SelcetColor')){
-	// $('body').attr('class',storageLoad('SelcetColor').Color)
-	// }else{
-	// storageSave(saveSelectColor);
-	// $('body').attr('class','theme-black')
-	// }
 	autoLeftNav();
 	$(window).resize(function() {
 		autoLeftNav();
 		console.log($(window).width())
 	});
-
-	// if(storageLoad('SelcetColor')){
-
-	// }else{
-	// storageSave(saveSelectColor);
-	// }
 	jumpTo($(".active"),'statistics');
 });
-
-// 风格切换
 
 $('.tpl-skiner-toggle').on('click', function() {
 	$('.tpl-skiner').toggleClass('active');
@@ -37,7 +17,6 @@ $('.tpl-skiner-content-bar').find('span').on('click', function() {
 	saveSelectColor.Color = $(this).attr('data-color');
 	// 保存选择项
 	storageSave(saveSelectColor);
-
 });
 
 // 侧边菜单开关
@@ -63,7 +42,7 @@ function autoLeftNav() {
 		$('.left-sidebar').removeClass('active');
 	}
 
-	mainHeight = $(window).height()-150;
+	mainHeight = $(window).height()-70;
 }
 
 // 侧边菜单
@@ -78,7 +57,7 @@ $('.sidebar-nav-sub-title').on(
 function jumpTo(t, tag) {
 	$("#dvMain").empty();
 	$("#dvMain").html(
-			'<iframe scrolling="auto" frameborder="0"  src="' + tag
+			'<iframe id="frmMain" scrolling="auto" frameborder="0"  src="' + tag
 					+ '" style="width:100%;height:' + mainHeight
 					+ 'px;"></iframe>');
 

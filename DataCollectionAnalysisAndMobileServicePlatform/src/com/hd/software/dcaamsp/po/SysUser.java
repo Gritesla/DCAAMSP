@@ -1,63 +1,105 @@
 package com.hd.software.dcaamsp.po;
 
+import java.math.BigDecimal;
+
 public class SysUser {
-    private String id;
+    private BigDecimal dpRespId;
 
-    private String usercode;
+    private String dpRespUsercode;
 
-    private String username;
+    private String dpRespUsername;
 
-    private String password;
+    private String dpRespPassword;
 
-    private String salt;
+    private String dpRespSalt;
 
-    private String locked;
+    private String dpRespLock;
 
-    public String getId() {
-        return id;
+    private String dpRespPlatform;
+
+    private String dpRespDel;
+
+    private String dpRespSquadronid;
+
+    private BigDecimal dpRespRoleid;
+
+    public BigDecimal getDpRespId() {
+        return dpRespId;
     }
 
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
+    public void setDpRespId(BigDecimal dpRespId) {
+        this.dpRespId = dpRespId;
     }
 
-    public String getUsercode() {
-        return usercode;
+    public String getDpRespUsercode() {
+        return dpRespUsercode;
     }
 
-    public void setUsercode(String usercode) {
-        this.usercode = usercode == null ? null : usercode.trim();
+    public void setDpRespUsercode(String dpRespUsercode) {
+        this.dpRespUsercode = dpRespUsercode == null ? null : dpRespUsercode.trim();
     }
 
-    public String getUsername() {
-        return username;
+    public String getDpRespUsername() {
+        return dpRespUsername;
     }
 
-    public void setUsername(String username) {
-        this.username = username == null ? null : username.trim();
+    public void setDpRespUsername(String dpRespUsername) {
+        this.dpRespUsername = dpRespUsername == null ? null : dpRespUsername.trim();
     }
 
-    public String getPassword() {
-        return password;
+    public String getDpRespPassword() {
+        return dpRespPassword;
     }
 
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+    public void setDpRespPassword(String dpRespPassword) {
+        this.dpRespPassword = dpRespPassword == null ? null : dpRespPassword.trim();
     }
 
-    public String getSalt() {
-        return salt;
+    public String getDpRespSalt() {
+        return dpRespSalt;
     }
 
-    public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
+    public void setDpRespSalt(String dpRespSalt) {
+        this.dpRespSalt = dpRespSalt == null ? null : dpRespSalt.trim();
     }
 
-    public String getLocked() {
-        return locked;
+    public String getDpRespLock() {
+        return dpRespLock;
     }
 
-    public void setLocked(String locked) {
-        this.locked = locked == null ? null : locked.trim();
+    public void setDpRespLock(String dpRespLock) {
+        this.dpRespLock = dpRespLock == null ? null : dpRespLock.trim();
+    }
+
+    public String getDpRespPlatform() {
+        return dpRespPlatform;
+    }
+
+    public void setDpRespPlatform(String dpRespPlatform) {
+        this.dpRespPlatform = dpRespPlatform == null ? null : dpRespPlatform.trim();
+    }
+
+    public String getDpRespDel() {
+        return dpRespDel;
+    }
+
+    public void setDpRespDel(String dpRespDel) {
+        this.dpRespDel = dpRespDel == null ? null : dpRespDel.trim();
+    }
+
+    public String getDpRespSquadronid() {
+        return dpRespSquadronid;
+    }
+
+    public void setDpRespSquadronid(String dpRespSquadronid) {
+        this.dpRespSquadronid = dpRespSquadronid == null ? null : dpRespSquadronid.trim();
+    }
+
+    public BigDecimal getDpRespRoleid() {
+        return dpRespRoleid;
+    }
+
+    public void setDpRespRoleid(BigDecimal dpRespRoleid) {
+        this.dpRespRoleid = dpRespRoleid;
     }
 }

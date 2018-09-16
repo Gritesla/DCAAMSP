@@ -12,13 +12,12 @@
 <base href="<%=basePath%>">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>主页面</title>
+<title>数据服务平台</title>
 <meta name="description" content="这是一个 主页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="renderer" content="webkit">
-<!-- <meta http-equiv="Cache-Control" content="no-siteapp" /> -->
-<!-- <script src="ass/amazeui/js/echarts.min.js"></script> -->
+<link rel="stylesheet" href="ass/font-awesome/css/font-awesome.min.css" />
 <link rel="stylesheet" href="ass/amazeui/css/amazeui.min.css" />
 <link rel="stylesheet" href="ass/amazeui/css/amazeui.datatables.min.css" />
 <link rel="stylesheet" href="ass/amazeui/css/app.css">
@@ -26,7 +25,7 @@
 
 </head>
 
-<body data-type="index">
+<body data-type="index" >
 	<script src="ass/amazeui/js/theme.js"></script>
 	<div class="am-g tpl-g">
 		<!-- 头部 -->
@@ -159,21 +158,9 @@
 					</ul>
 				</div>
 			</div>
-
 		</header>
-		<!-- 风格切换 -->
-		<!-- <div class="tpl-skiner">
-			<div class="tpl-skiner-toggle am-icon-cog"></div>
-			<div class="tpl-skiner-content">
-				<div class="tpl-skiner-content-title">选择主题</div>
-				<div class="tpl-skiner-content-bar">
-					<span class="skiner-color skiner-white" data-color="theme-white"></span>
-					<span class="skiner-color skiner-black" data-color="theme-black"></span>
-				</div>
-			</div>
-		</div> -->
 		<!-- 侧边导航栏 -->
-		<div class="left-sidebar">
+		<div id="dvLeft" class="left-sidebar">
 			<!-- 用户信息 -->
 			<div class="tpl-sidebar-user-panel">
 				<div class="tpl-user-panel-slide-toggleable">
@@ -197,34 +184,15 @@
 							数据统计
 					</a></li>
 				</shiro:hasPermission>
-				<shiro:hasPermission name="7">
+				<shiro:hasPermission name="2">
 					<li class="sidebar-nav-link"><a
-						onclick="jumpTo(this,'statistics')" href="javascript:;"> <i
-							class="am-icon-table sidebar-nav-link-logo"></i> 报警信息
+						onclick="jumpTo(this,'user/manage')" href="javascript:;"
+						class="sidebar-nav-sub-title"> <i
+							class="am-icon-calendar sidebar-nav-link-logo"></i> 用户管理
 					</a></li>
 				</shiro:hasPermission>
-				<shiro:hasPermission name="2">
-					<li class="sidebar-nav-link"><a href="javascript:;"
-						class="sidebar-nav-sub-title"> <i
-							class="am-icon-calendar sidebar-nav-link-logo"></i> 用户管理 <span
-							class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
-					</a>
-						<ul class="sidebar-nav sidebar-nav-sub">
-							<shiro:hasPermission name="21">
-								<li class="sidebar-nav-link"><a
-									onclick="jumpTo(this,'userList')" href="javascript:;"> <span
-										class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										采集端用户
-								</a></li>
-							</shiro:hasPermission>
-							<shiro:hasPermission name="22">
-								<li class="sidebar-nav-link"><a href="table-list-img.html">
-										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										作战端用户
-								</a></li>
-							</shiro:hasPermission>
-						</ul></li>
-				</shiro:hasPermission>
+
+
 				<shiro:hasPermission name="3">
 					<li class="sidebar-nav-link"><a href="javascript:;"
 						class="sidebar-nav-sub-title"> <i
@@ -233,48 +201,44 @@
 					</a>
 						<ul class="sidebar-nav sidebar-nav-sub">
 							<shiro:hasPermission name="31">
-								<li class="sidebar-nav-link"><a href="table-list.html">
-										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'auth/group')" href="javascript:;"> <span
+										class="am-icon-angle-right sidebar-nav-link-logo"></span>
 										权限组设定
 								</a></li>
 							</shiro:hasPermission>
 							<shiro:hasPermission name="32">
-								<li class="sidebar-nav-link"><a href="table-list-img.html">
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'auth/setting')" href="javascript:;">
 										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
 										用户权限设定
 								</a></li>
 							</shiro:hasPermission>
 						</ul></li>
 				</shiro:hasPermission>
-				<shiro:hasPermission name="4">
+				<shiro:hasPermission name="5">
 					<li class="sidebar-nav-link"><a href="javascript:;"
 						class="sidebar-nav-sub-title"> <i
-							class="am-icon-bar-chart sidebar-nav-link-logo"></i> 信息管理<span
+							class="am-icon-table sidebar-nav-link-logo"></i> 审核管理 <span
 							class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
 					</a>
 						<ul class="sidebar-nav sidebar-nav-sub">
-							<shiro:hasPermission name="41">
+							<shiro:hasPermission name="51">
 								<li class="sidebar-nav-link"><a href="table-list.html">
 										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										历史信息列表
+										信息审核
 								</a></li>
 							</shiro:hasPermission>
-							<shiro:hasPermission name="42">
-								<li class="sidebar-nav-link"><a href="table-list.html">
-										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										待审核信息
-								</a></li>
-							</shiro:hasPermission>
-							<shiro:hasPermission name="43">
+							<shiro:hasPermission name="52">
 								<li class="sidebar-nav-link"><a href="table-list-img.html">
 										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										已审核信息
+										报警审核
 								</a></li>
 							</shiro:hasPermission>
-							<shiro:hasPermission name="44">
+							<shiro:hasPermission name="53">
 								<li class="sidebar-nav-link"><a href="table-list-img.html">
 										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
-										未通过信息
+										预案审核
 								</a></li>
 							</shiro:hasPermission>
 						</ul></li>
@@ -326,20 +290,133 @@
 							</shiro:hasPermission>
 						</ul></li>
 				</shiro:hasPermission>
-				<li class="sidebar-nav-link"><a href="sign-up.html"> <i
+				<shiro:hasPermission name="7">
+					<li class="sidebar-nav-link"><a href="javascript:;"
+						class="sidebar-nav-sub-title"> <i
+							class="am-icon-table sidebar-nav-link-logo"></i> 报警管理<span
+							class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+					</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a href="table-list.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										报警信息总览
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a href="table-list.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										历史信息查询
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="43">
+								<li class="sidebar-nav-link"><a href="table-list-img.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										已审核信息
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="44">
+								<li class="sidebar-nav-link"><a href="table-list-img.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										误报信息
+								</a></li>
+							</shiro:hasPermission>
+						</ul></li>
+				</shiro:hasPermission>
+				<shiro:hasPermission name="4">
+					<li class="sidebar-nav-link"><a href="javascript:;"
+						class="sidebar-nav-sub-title"> <i
+							class="am-icon-bar-chart sidebar-nav-link-logo"></i> 信息管理<span
+							class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+					</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'info/important')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										重点部位信息
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a onclick="jumpTo(this,'info/small')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										九小场所信息
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="42">
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'info/detachment')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										执勤力量信息 
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="43">
+								<li class="sidebar-nav-link"><a onclick="jumpTo(this,'info/park')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										化工园区信息
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="43">
+								<li class="sidebar-nav-link"><a href="table-list-img.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										战备物资信息
+								</a></li>
+							</shiro:hasPermission>
+						</ul></li>
+				</shiro:hasPermission>
+				<shiro:hasPermission name="4">
+					<li class="sidebar-nav-link"><a href="javascript:;"
+						class="sidebar-nav-sub-title"> <i class="fa fa-object-group"
+							style="margin-right: 12px;"></i> 预案管理<span
+							class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
+					</a>
+						<ul class="sidebar-nav sidebar-nav-sub">
+							<shiro:hasPermission name="43">
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'plan/pandect')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										预案总览
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a onclick="jumpTo(this,'plan/basic')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										文本预案
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a href="table-list.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										卡片预案
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="41">
+								<li class="sidebar-nav-link"><a
+									onclick="jumpTo(this,'plan/2d/pandect')" href="javascript:;">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										二维预案
+								</a></li>
+							</shiro:hasPermission>
+							<shiro:hasPermission name="42">
+								<li class="sidebar-nav-link"><a href="table-list.html">
+										<span class="am-icon-angle-right sidebar-nav-link-logo"></span>
+										三维预案
+								</a></li>
+							</shiro:hasPermission>
+
+						</ul></li>
+				</shiro:hasPermission>
+
+				<!-- <li class="sidebar-nav-link"><a href="sign-up.html"> <i
 						class="am-icon-clone sidebar-nav-link-logo"></i> 注册 <span
 						class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>
-				</a></li>
+				</a></li> -->
 			</ul>
 		</div>
 
 
 		<!-- 内容区域 -->
-		<div id="dvMain" class="tpl-content-wrapper">
-			<!-- <iframe scrolling="auto" frameborder="0" src="statistics"
-				style="width:100%;height:1200px;"></iframe> -->
-
-		</div>
+		<div id="dvMain" class="tpl-content-wrapper"></div>
 	</div>
 
 	<script src="ass/amazeui/js/amazeui.min.js"></script>

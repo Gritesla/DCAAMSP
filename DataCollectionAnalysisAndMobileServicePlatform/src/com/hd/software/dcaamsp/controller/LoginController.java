@@ -9,21 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-
-
-
-
-import com.hd.software.dcaamsp.exception.CustomException;
-import com.hd.software.dcaamsp.po.User;
-import com.hd.software.dcaamsp.po.UserCustom;
-import com.hd.software.dcaamsp.po.UserQueryVo;
+import com.hd.software.dcaamsp.po.SysUserQueryVo;
 import com.hd.software.dcaamsp.po.ValidateStatus;
-import com.hd.software.dcaamsp.service.SysService;
-import com.hd.software.dcaamsp.service.UserService;
+import com.hd.software.dcaamsp.service.SysUserService;
 
 @Controller
 public class LoginController {
@@ -32,7 +21,7 @@ public class LoginController {
 	private SysService sysService;*/
 	
 	@Autowired
-	private UserService userService;
+	private SysUserService userService;
 
 	// PC登录
 	@RequestMapping(value = "login")
@@ -65,7 +54,7 @@ public class LoginController {
 	// APP登录
 	@RequestMapping(value = "/appLogin")
 	public @ResponseBody
-	String appLogin(@RequestBody UserQueryVo userQueryVo,
+	String appLogin(@RequestBody SysUserQueryVo userQueryVo,
 			HttpServletResponse res) throws Exception {
 		res.setHeader("Access-Control-Allow-Origin", "*");
 

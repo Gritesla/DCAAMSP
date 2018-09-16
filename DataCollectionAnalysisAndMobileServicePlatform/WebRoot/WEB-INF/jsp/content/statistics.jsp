@@ -1,18 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-	String path = request.getContextPath();
-	String basePath = request.getScheme() + "://"
-			+ request.getServerName() + ":" + request.getServerPort()
-			+ path + "/";
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
-<base href="<%=basePath%>">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>数据统计页面</title>
-<meta name="description" content="这是一个 数据统计页面">
 <meta name="keywords" content="index">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="renderer" content="webkit">
@@ -25,7 +16,6 @@
 
 <body>
 	<script src="ass/amazeui/js/theme.js"></script>
-
 	<div class="container-fluid am-cf">
 		<div class="row">
 			<div class="am-u-sm-12 am-u-md-12 am-u-lg-9">
@@ -40,7 +30,6 @@
 				</button>
 			</div>
 		</div>
-
 	</div>
 
 	<div class="row-content am-cf">
@@ -65,11 +54,9 @@
 								class="widget-fluctuation-description-amount text-success" am-cf>
 								<span>12</span>
 							</div>
-
 						</div>
 					</div>
 				</div>
-
 			</div>
 			<div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
 				<div class="widget widget-yellow am-cf">
@@ -83,7 +70,6 @@
 					<div class="widget-body am-fr" style="text-align: center;">
 						<span style="font-size: 20px;color: black;">数量：</span><span
 							style="font-size: 35px;color: red;">312</span>
-
 						<div class="am-fr am-cf">
 							<div class="widget-fluctuation-description-text am-text-right">
 								较上月减少次数</div>
@@ -91,11 +77,9 @@
 								class="widget-fluctuation-description-amount text-success" am-cf>
 								<span>42</span>
 							</div>
-
 						</div>
 					</div>
 				</div>
-
 			</div>
 			<div class="am-u-sm-12 am-u-md-12 am-u-lg-4">
 				<div class="widget widget-blue am-cf">
@@ -117,7 +101,6 @@
 								class="widget-fluctuation-description-amount text-success" am-cf>
 								<span>2</span>
 							</div>
-
 						</div>
 					</div>
 				</div>

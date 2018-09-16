@@ -14,11 +14,9 @@ public class MainController {
 
 	@RequestMapping(value = "/statistics")
 	public String statistics() {
-		return "content/statistics";
+		return "statistics/statistics_pandect";
 	}
 
-	@RequestMapping(value = "/userList")
-	public String userList() {
-		return "content/user-list";
-	}
+	
+
 }

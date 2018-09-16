@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpImportantMapperCustom">
+	<resultMap id="ImportantMap" type="com.hd.software.dcaamsp.po.DpImportantCustom">
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_DWMC" property="dpRespDwmc" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FRDB" property="dpRespFrdb" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FRDBDH" property="dpRespFrdbdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQZRR" property="dpRespAqzrr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQZRRDH" property="dpRespAqzrrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDZYX" property="dpRespDwdzyx" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQGLR" property="dpRespAqglr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQGLRDH" property="dpRespAqglrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ZJZXFGLR" property="dpRespZjzxfglr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ZJZXFGLRDH" property="dpRespZjzxfglrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDZ" property="dpRespDwdz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDH" property="dpRespDwdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DLWZ" property="dpRespDlwz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWLB" property="dpRespDwlb" jdbcType="VARCHAR" />
+    <result column="DP_RESP_BZ" property="dpRespBz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_GIS_X" property="dpRespGisX" jdbcType="VARCHAR" />
+    <result column="DP_RESP_GIS_Y" property="dpRespGisY" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DETACHMENTID" property="dpRespDetachmentid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_HGYQ" property="dpRespHgyq" jdbcType="VARCHAR" />
+		<result column="DP_RESP_NAME" property="dpRespSquadronName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="findImportantByPagination" resultMap="ImportantMap">
+		SELECT * FROM(
+		SELECT ROWNUM RN,T1.*,T2.DP_RESP_SQUADRONNAME FROM DP_IMPORTANT T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_DWMC LIKE '%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC) T3
+		WHERE
+		T3.RN
+		BETWEEN
+		#{startIndex} AND #{endIndex}
+	</select>
+
+	<select id="findImportantCountByPagination" resultType="java.lang.Integer">
+		
+		SELECT COUNT(*) FROM DP_IMPORTANT T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_DWMC LIKE '%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC
+	</select>
+</mapper>

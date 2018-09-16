@@ -1,93 +1,95 @@
 package com.hd.software.dcaamsp.po;
 
-public class SysPermission implements java.io.Serializable{
-    private Long id;
+import java.math.BigDecimal;
 
-    private String name;
+public class SysPermission {
+    private BigDecimal dpRespCode;
 
-    private String type;
+    private String dpRespName;
 
-    private String url;
+    private String dpRespType;
 
-    private String percode;
+    private BigDecimal dpRespPcode;
 
-    private Long parentid;
+    private String dpRespAvailable;
 
-    private String parentids;
+    private String dpRespSort;
 
-    private String sortstring;
+    private String dpRespPids;
 
-    private String available;
+    private String dpRespUrl;
 
-    public Long getId() {
-        return id;
+    private String dpRespDesp;
+
+    public BigDecimal getDpRespCode() {
+        return dpRespCode;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setDpRespCode(BigDecimal dpRespCode) {
+        this.dpRespCode = dpRespCode;
     }
 
-    public String getName() {
-        return name;
+    public String getDpRespName() {
+        return dpRespName;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setDpRespName(String dpRespName) {
+        this.dpRespName = dpRespName == null ? null : dpRespName.trim();
     }
 
-    public String getType() {
-        return type;
+    public String getDpRespType() {
+        return dpRespType;
     }
 
-    public void setType(String type) {
-        this.type = type == null ? null : type.trim();
+    public void setDpRespType(String dpRespType) {
+        this.dpRespType = dpRespType == null ? null : dpRespType.trim();
     }
 
-    public String getUrl() {
-        return url;
+    public BigDecimal getDpRespPcode() {
+        return dpRespPcode;
     }
 
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setDpRespPcode(BigDecimal dpRespPcode) {
+        this.dpRespPcode = dpRespPcode;
     }
 
-    public String getPercode() {
-        return percode;
+    public String getDpRespAvailable() {
+        return dpRespAvailable;
     }
 
-    public void setPercode(String percode) {
-        this.percode = percode == null ? null : percode.trim();
+    public void setDpRespAvailable(String dpRespAvailable) {
+        this.dpRespAvailable = dpRespAvailable == null ? null : dpRespAvailable.trim();
     }
 
-    public Long getParentid() {
-        return parentid;
+    public String getDpRespSort() {
+        return dpRespSort;
     }
 
-    public void setParentid(Long parentid) {
-        this.parentid = parentid;
+    public void setDpRespSort(String dpRespSort) {
+        this.dpRespSort = dpRespSort == null ? null : dpRespSort.trim();
     }
 
-    public String getParentids() {
-        return parentids;
+    public String getDpRespPids() {
+        return dpRespPids;
     }
 
-    public void setParentids(String parentids) {
-        this.parentids = parentids == null ? null : parentids.trim();
+    public void setDpRespPids(String dpRespPids) {
+        this.dpRespPids = dpRespPids == null ? null : dpRespPids.trim();
     }
 
-    public String getSortstring() {
-        return sortstring;
+    public String getDpRespUrl() {
+        return dpRespUrl;
     }
 
-    public void setSortstring(String sortstring) {
-        this.sortstring = sortstring == null ? null : sortstring.trim();
+    public void setDpRespUrl(String dpRespUrl) {
+        this.dpRespUrl = dpRespUrl == null ? null : dpRespUrl.trim();
     }
 
-    public String getAvailable() {
-        return available;
+    public String getDpRespDesp() {
+        return dpRespDesp;
     }
 
-    public void setAvailable(String available) {
-        this.available = available == null ? null : available.trim();
+    public void setDpRespDesp(String dpRespDesp) {
+        this.dpRespDesp = dpRespDesp == null ? null : dpRespDesp.trim();
     }
 }

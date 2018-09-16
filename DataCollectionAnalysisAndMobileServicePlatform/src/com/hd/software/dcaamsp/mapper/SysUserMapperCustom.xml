@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.SysUserMapperCustom">
+	<resultMap id="UserListResultMap" type="com.hd.software.dcaamsp.po.SysUserCustom">
+		<id column="USERID" property="dpRespId" jdbcType="NUMERIC" />
+		<result column="USERCODE" property="dpRespUsercode" jdbcType="VARCHAR" />
+		<result column="USERNAME" property="dpRespUsername" jdbcType="VARCHAR" />
+		<result column="SQUADRONNAME" property="dpRespSquadronName"
+			jdbcType="VARCHAR" />
+		<result column="SQUADRONID" property="dpRespSquadronid"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<!-- 定义SQL片段 -->
+	<sql id="findUserByLoginName_where">
+		<!-- 使用动态SQL -->
+		<if test="sysUserCustom!=null">
+			<if test="sysUserCustom.LoginName=null and sysUserCustom.LoginName=''">
+				WHERE sys_user.DP_RESP_USERCODE
+				='${sysUserCustom.dpRespUsercode}'
+			</if>
+		</if>
+	</sql>
+
+	<!--parameterType传入包装对象 -->
+	<select id="findUserByLoginName" parameterType="com.hd.software.dcaamsp.po.SysUserQueryVo"
+		resultType="com.hd.software.dcaamsp.po.SysUserCustom">
+		SELECT * FROM sys_user
+
+		<where>
+			<include refid="findUserByLoginName_where"></include>
+		</where>
+
+	</select>
+
+
+
+	<select id="validateLogin" parameterType="com.hd.software.dcaamsp.po.SysUserQueryVo"
+		resultType="java.lang.Integer">
+		SELECT COUNT(*) ResultCount FROM sys_user WHERE
+		sys_user.DP_RESP_USERCODE
+		='${sysUserCustom.dpRespUsercode}' AND
+		sys_user.DP_RESP_PASSWORD ='${sysUserCustom.dpRespPassword}'
+
+	</select>
+
+
+	<select id="findUsersBySquadronid" parameterType="string"
+		resultMap="UserListResultMap">		
+				SELECT * FROM
+		(SELECT T1.DP_RESP_ID USERID, T1.DP_RESP_USERCODE
+		USERCODE,T1.DP_RESP_USERNAME USERNAME,T2.DP_RESP_SQUADRONNAME
+		SQUADRONNAME,T2.DP_RESP_SQUADRONID SQUADRONID FROM SYS_USER T1
+		LEFT JOIN DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_SQUADRONID=T2.DP_RESP_SQUADRONID) T3
+		WHERE T3.SQUADRONID IN (SELECT DP_RESP_SQUADRONID FROM DP_FIRESQUADRON
+		CONNECT BY PRIOR DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{id}) ORDER BY USERID ASC
+
+
+	</select>
+</mapper>

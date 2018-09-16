@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpSmallplacesDeviceMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.DpSmallplacesDevice" >
+    <result column="DP_RESP_UNITCODE" property="dpRespUnitcode" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DEVICEID" property="dpRespDeviceid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_LAYER" property="dpRespLayer" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DOORNUMBER" property="dpRespDoornumber" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_UNITCODE, DP_RESP_DEVICEID, DP_RESP_LAYER, DP_RESP_DOORNUMBER
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesDeviceExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DP_SMALLPLACES_DEVICE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesDeviceExample" >
+    delete from DP_SMALLPLACES_DEVICE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesDevice" >
+    insert into DP_SMALLPLACES_DEVICE (DP_RESP_UNITCODE, DP_RESP_DEVICEID, DP_RESP_LAYER, 
+      DP_RESP_DOORNUMBER)
+    values (#{dpRespUnitcode,jdbcType=VARCHAR}, #{dpRespDeviceid,jdbcType=VARCHAR}, #{dpRespLayer,jdbcType=VARCHAR}, 
+      #{dpRespDoornumber,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesDevice" >
+    insert into DP_SMALLPLACES_DEVICE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespUnitcode != null" >
+        DP_RESP_UNITCODE,
+      </if>
+      <if test="dpRespDeviceid != null" >
+        DP_RESP_DEVICEID,
+      </if>
+      <if test="dpRespLayer != null" >
+        DP_RESP_LAYER,
+      </if>
+      <if test="dpRespDoornumber != null" >
+        DP_RESP_DOORNUMBER,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespUnitcode != null" >
+        #{dpRespUnitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDeviceid != null" >
+        #{dpRespDeviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespLayer != null" >
+        #{dpRespLayer,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDoornumber != null" >
+        #{dpRespDoornumber,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesDeviceExample" resultType="java.lang.Integer" >
+    select count(*) from DP_SMALLPLACES_DEVICE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DP_SMALLPLACES_DEVICE
+    <set >
+      <if test="record.dpRespUnitcode != null" >
+        DP_RESP_UNITCODE = #{record.dpRespUnitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDeviceid != null" >
+        DP_RESP_DEVICEID = #{record.dpRespDeviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespLayer != null" >
+        DP_RESP_LAYER = #{record.dpRespLayer,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDoornumber != null" >
+        DP_RESP_DOORNUMBER = #{record.dpRespDoornumber,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DP_SMALLPLACES_DEVICE
+    set DP_RESP_UNITCODE = #{record.dpRespUnitcode,jdbcType=VARCHAR},
+      DP_RESP_DEVICEID = #{record.dpRespDeviceid,jdbcType=VARCHAR},
+      DP_RESP_LAYER = #{record.dpRespLayer,jdbcType=VARCHAR},
+      DP_RESP_DOORNUMBER = #{record.dpRespDoornumber,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

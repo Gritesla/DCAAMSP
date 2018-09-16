@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpSmallplacesMapperCustom">
+	<resultMap id="SmallMap" type="com.hd.software.dcaamsp.po.DpSmallplaces">
+		<result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+		<result column="DP_RESP_UNITCODE" property="dpRespUnitcode"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_UNITNAME" property="dpRespUnitname"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_UNITPHONE" property="dpRespUnitphone"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_UNITADDRESS" property="dpRespUnitaddress"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_X" property="dpRespX" jdbcType="VARCHAR" />
+		<result column="DP_RESP_Y" property="dpRespY" jdbcType="VARCHAR" />
+		<result column="DP_RESP_CORPORATION" property="dpRespCorporation"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_CORPORATIONPHONE" property="dpRespCorporationphone"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_LIABLE" property="dpRespLiable"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_LIABLEPHONE" property="dpRespLiablephone"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="fineSmallplacesByPagination" resultMap="SmallMap">
+		SELECT *
+		FROM(SELECT ROWNUM RN,T1.* FROM DP_SMALLPLACES T1 WHERE
+		T1.DP_RESP_UNITNAME LIKE '%${unitName}%') T2 WHERE T2.RN BETWEEN
+		#{startIndex} AND #{endIndex}
+	</select>
+
+	<select id="findSmallCountByPagination" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM DP_SMALLPLACES WHERE
+		DP_RESP_UNITNAME LIKE
+		'%${unitName}%'
+	</select>
+</mapper>

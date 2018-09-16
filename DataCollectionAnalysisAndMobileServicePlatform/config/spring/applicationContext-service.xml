@@ -16,7 +16,12 @@
 
 
 	<!-- 配置Service -->
-	<bean id="userService" class="com.hd.software.dcaamsp.service.impl.UserServiceImpl"></bean>
+	<bean id="userService" class="com.hd.software.dcaamsp.service.impl.SysUserServiceImpl"></bean>
+	<bean id="roleService" class="com.hd.software.dcaamsp.service.impl.SysRoleServiceImpl"></bean>
+	<bean id="permissionService"
+		class="com.hd.software.dcaamsp.service.impl.SysPermissionServiceImpl"></bean>
+	<bean id="infoService" class="com.hd.software.dcaamsp.service.impl.InfoServiceImpl"></bean>
+	<bean id="planService" class="com.hd.software.dcaamsp.service.impl.PlanServiceImpl"></bean>
 
 	<!-- 认证和授权的service -->
 	<bean id="sysService" class="com.hd.software.dcaamsp.service.impl.SysServiceImpl"></bean>

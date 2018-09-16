@@ -2,15 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hd.software.dcaamsp.mapper.SysPermissionMapper" >
   <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.SysPermission" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="type" property="type" jdbcType="VARCHAR" />
-    <result column="url" property="url" jdbcType="VARCHAR" />
-    <result column="percode" property="percode" jdbcType="VARCHAR" />
-    <result column="parentid" property="parentid" jdbcType="BIGINT" />
-    <result column="parentids" property="parentids" jdbcType="VARCHAR" />
-    <result column="sortstring" property="sortstring" jdbcType="VARCHAR" />
-    <result column="available" property="available" jdbcType="CHAR" />
+    <result column="DP_RESP_CODE" property="dpRespCode" jdbcType="DECIMAL" />
+    <result column="DP_RESP_NAME" property="dpRespName" jdbcType="VARCHAR" />
+    <result column="DP_RESP_TYPE" property="dpRespType" jdbcType="VARCHAR" />
+    <result column="DP_RESP_PCODE" property="dpRespPcode" jdbcType="DECIMAL" />
+    <result column="DP_RESP_AVAILABLE" property="dpRespAvailable" jdbcType="CHAR" />
+    <result column="DP_RESP_SORT" property="dpRespSort" jdbcType="VARCHAR" />
+    <result column="DP_RESP_PIDS" property="dpRespPids" jdbcType="VARCHAR" />
+    <result column="DP_RESP_URL" property="dpRespUrl" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DESP" property="dpRespDesp" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -71,7 +71,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, name, type, url, percode, parentid, parentids, sortstring, available
+    DP_RESP_CODE, DP_RESP_NAME, DP_RESP_TYPE, DP_RESP_PCODE, DP_RESP_AVAILABLE, DP_RESP_SORT, 
+    DP_RESP_PIDS, DP_RESP_URL, DP_RESP_DESP
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.SysPermissionExample" >
     select
@@ -79,7 +80,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from sys_permission
+    from SYS_PERMISSION
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,128 +88,118 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
-    select 
-    <include refid="Base_Column_List" />
-    from sys_permission
-    where id = #{id,jdbcType=BIGINT}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from sys_permission
-    where id = #{id,jdbcType=BIGINT}
-  </delete>
   <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.SysPermissionExample" >
-    delete from sys_permission
+    delete from SYS_PERMISSION
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.hd.software.dcaamsp.po.SysPermission" >
-    insert into sys_permission (id, name, type, 
-      url, percode, parentid, 
-      parentids, sortstring, available
+    insert into SYS_PERMISSION (DP_RESP_CODE, DP_RESP_NAME, DP_RESP_TYPE, 
+      DP_RESP_PCODE, DP_RESP_AVAILABLE, DP_RESP_SORT, 
+      DP_RESP_PIDS, DP_RESP_URL, DP_RESP_DESP
       )
-    values (#{id,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR}, 
-      #{url,jdbcType=VARCHAR}, #{percode,jdbcType=VARCHAR}, #{parentid,jdbcType=BIGINT}, 
-      #{parentids,jdbcType=VARCHAR}, #{sortstring,jdbcType=VARCHAR}, #{available,jdbcType=CHAR}
+    values (#{dpRespCode,jdbcType=DECIMAL}, #{dpRespName,jdbcType=VARCHAR}, #{dpRespType,jdbcType=VARCHAR}, 
+      #{dpRespPcode,jdbcType=DECIMAL}, #{dpRespAvailable,jdbcType=CHAR}, #{dpRespSort,jdbcType=VARCHAR}, 
+      #{dpRespPids,jdbcType=VARCHAR}, #{dpRespUrl,jdbcType=VARCHAR}, #{dpRespDesp,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.SysPermission" >
-    insert into sys_permission
+    insert into SYS_PERMISSION
     <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        id,
+      <if test="dpRespCode != null" >
+        DP_RESP_CODE,
       </if>
-      <if test="name != null" >
-        name,
+      <if test="dpRespName != null" >
+        DP_RESP_NAME,
       </if>
-      <if test="type != null" >
-        type,
+      <if test="dpRespType != null" >
+        DP_RESP_TYPE,
       </if>
-      <if test="url != null" >
-        url,
+      <if test="dpRespPcode != null" >
+        DP_RESP_PCODE,
       </if>
-      <if test="percode != null" >
-        percode,
+      <if test="dpRespAvailable != null" >
+        DP_RESP_AVAILABLE,
       </if>
-      <if test="parentid != null" >
-        parentid,
+      <if test="dpRespSort != null" >
+        DP_RESP_SORT,
       </if>
-      <if test="parentids != null" >
-        parentids,
+      <if test="dpRespPids != null" >
+        DP_RESP_PIDS,
       </if>
-      <if test="sortstring != null" >
-        sortstring,
+      <if test="dpRespUrl != null" >
+        DP_RESP_URL,
       </if>
-      <if test="available != null" >
-        available,
+      <if test="dpRespDesp != null" >
+        DP_RESP_DESP,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=BIGINT},
+      <if test="dpRespCode != null" >
+        #{dpRespCode,jdbcType=DECIMAL},
       </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="dpRespName != null" >
+        #{dpRespName,jdbcType=VARCHAR},
       </if>
-      <if test="type != null" >
-        #{type,jdbcType=VARCHAR},
+      <if test="dpRespType != null" >
+        #{dpRespType,jdbcType=VARCHAR},
       </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
+      <if test="dpRespPcode != null" >
+        #{dpRespPcode,jdbcType=DECIMAL},
       </if>
-      <if test="percode != null" >
-        #{percode,jdbcType=VARCHAR},
+      <if test="dpRespAvailable != null" >
+        #{dpRespAvailable,jdbcType=CHAR},
       </if>
-      <if test="parentid != null" >
-        #{parentid,jdbcType=BIGINT},
+      <if test="dpRespSort != null" >
+        #{dpRespSort,jdbcType=VARCHAR},
       </if>
-      <if test="parentids != null" >
-        #{parentids,jdbcType=VARCHAR},
+      <if test="dpRespPids != null" >
+        #{dpRespPids,jdbcType=VARCHAR},
       </if>
-      <if test="sortstring != null" >
-        #{sortstring,jdbcType=VARCHAR},
+      <if test="dpRespUrl != null" >
+        #{dpRespUrl,jdbcType=VARCHAR},
       </if>
-      <if test="available != null" >
-        #{available,jdbcType=CHAR},
+      <if test="dpRespDesp != null" >
+        #{dpRespDesp,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.SysPermissionExample" resultType="java.lang.Integer" >
-    select count(*) from sys_permission
+    select count(*) from SYS_PERMISSION
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update sys_permission
+    update SYS_PERMISSION
     <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=BIGINT},
+      <if test="record.dpRespCode != null" >
+        DP_RESP_CODE = #{record.dpRespCode,jdbcType=DECIMAL},
       </if>
-      <if test="record.name != null" >
-        name = #{record.name,jdbcType=VARCHAR},
+      <if test="record.dpRespName != null" >
+        DP_RESP_NAME = #{record.dpRespName,jdbcType=VARCHAR},
       </if>
-      <if test="record.type != null" >
-        type = #{record.type,jdbcType=VARCHAR},
+      <if test="record.dpRespType != null" >
+        DP_RESP_TYPE = #{record.dpRespType,jdbcType=VARCHAR},
       </if>
-      <if test="record.url != null" >
-        url = #{record.url,jdbcType=VARCHAR},
+      <if test="record.dpRespPcode != null" >
+        DP_RESP_PCODE = #{record.dpRespPcode,jdbcType=DECIMAL},
       </if>
-      <if test="record.percode != null" >
-        percode = #{record.percode,jdbcType=VARCHAR},
+      <if test="record.dpRespAvailable != null" >
+        DP_RESP_AVAILABLE = #{record.dpRespAvailable,jdbcType=CHAR},
       </if>
-      <if test="record.parentid != null" >
-        parentid = #{record.parentid,jdbcType=BIGINT},
+      <if test="record.dpRespSort != null" >
+        DP_RESP_SORT = #{record.dpRespSort,jdbcType=VARCHAR},
       </if>
-      <if test="record.parentids != null" >
-        parentids = #{record.parentids,jdbcType=VARCHAR},
+      <if test="record.dpRespPids != null" >
+        DP_RESP_PIDS = #{record.dpRespPids,jdbcType=VARCHAR},
       </if>
-      <if test="record.sortstring != null" >
-        sortstring = #{record.sortstring,jdbcType=VARCHAR},
+      <if test="record.dpRespUrl != null" >
+        DP_RESP_URL = #{record.dpRespUrl,jdbcType=VARCHAR},
       </if>
-      <if test="record.available != null" >
-        available = #{record.available,jdbcType=CHAR},
+      <if test="record.dpRespDesp != null" >
+        DP_RESP_DESP = #{record.dpRespDesp,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -216,60 +207,18 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update sys_permission
-    set id = #{record.id,jdbcType=BIGINT},
-      name = #{record.name,jdbcType=VARCHAR},
-      type = #{record.type,jdbcType=VARCHAR},
-      url = #{record.url,jdbcType=VARCHAR},
-      percode = #{record.percode,jdbcType=VARCHAR},
-      parentid = #{record.parentid,jdbcType=BIGINT},
-      parentids = #{record.parentids,jdbcType=VARCHAR},
-      sortstring = #{record.sortstring,jdbcType=VARCHAR},
-      available = #{record.available,jdbcType=CHAR}
+    update SYS_PERMISSION
+    set DP_RESP_CODE = #{record.dpRespCode,jdbcType=DECIMAL},
+      DP_RESP_NAME = #{record.dpRespName,jdbcType=VARCHAR},
+      DP_RESP_TYPE = #{record.dpRespType,jdbcType=VARCHAR},
+      DP_RESP_PCODE = #{record.dpRespPcode,jdbcType=DECIMAL},
+      DP_RESP_AVAILABLE = #{record.dpRespAvailable,jdbcType=CHAR},
+      DP_RESP_SORT = #{record.dpRespSort,jdbcType=VARCHAR},
+      DP_RESP_PIDS = #{record.dpRespPids,jdbcType=VARCHAR},
+      DP_RESP_URL = #{record.dpRespUrl,jdbcType=VARCHAR},
+      DP_RESP_DESP = #{record.dpRespDesp,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
-  </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hd.software.dcaamsp.po.SysPermission" >
-    update sys_permission
-    <set >
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="type != null" >
-        type = #{type,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="percode != null" >
-        percode = #{percode,jdbcType=VARCHAR},
-      </if>
-      <if test="parentid != null" >
-        parentid = #{parentid,jdbcType=BIGINT},
-      </if>
-      <if test="parentids != null" >
-        parentids = #{parentids,jdbcType=VARCHAR},
-      </if>
-      <if test="sortstring != null" >
-        sortstring = #{sortstring,jdbcType=VARCHAR},
-      </if>
-      <if test="available != null" >
-        available = #{available,jdbcType=CHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hd.software.dcaamsp.po.SysPermission" >
-    update sys_permission
-    set name = #{name,jdbcType=VARCHAR},
-      type = #{type,jdbcType=VARCHAR},
-      url = #{url,jdbcType=VARCHAR},
-      percode = #{percode,jdbcType=VARCHAR},
-      parentid = #{parentid,jdbcType=BIGINT},
-      parentids = #{parentids,jdbcType=VARCHAR},
-      sortstring = #{sortstring,jdbcType=VARCHAR},
-      available = #{available,jdbcType=CHAR}
-    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

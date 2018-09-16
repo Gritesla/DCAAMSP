@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpDetachmentMapperCustom">
+	<resultMap id="DetachmentMap" type="com.hd.software.dcaamsp.po.DpDetachmentCustom">
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_NAME" property="dpRespName" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ABBREVIATED" property="dpRespAbbreviated" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ADDR" property="dpRespAddr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_TELEPHONE" property="dpRespTelephone" jdbcType="VARCHAR" />
+    <result column="DP_RESP_CONTACT" property="dpRespContact" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FIRE_BIG_TEAM" property="dpRespFireBigTeam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FIRE_SQUADRON" property="dpRespFireSquadron" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ADDRESS" property="dpRespAddress" jdbcType="VARCHAR" />
+    <result column="DP_RESP_PHONE" property="dpRespPhone" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AREA" property="dpRespArea" jdbcType="VARCHAR" />
+    <result column="DP_RESP_REMARK" property="dpRespRemark" jdbcType="VARCHAR" />
+    <result column="DP_RESP_GIS_X" property="dpRespGisX" jdbcType="DECIMAL" />
+    <result column="DP_RESP_GIS_Y" property="dpRespGisY" jdbcType="DECIMAL" />
+    <result column="DP_RESP_DETACHMENTID" property="dpRespDetachmentid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_SQUADRONID" property="dpRespSquadronid" jdbcType="VARCHAR" />
+		<result column="DP_RESP_SQUADRON" property="dpRespSquadronName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="findDetachmentByPagination" resultMap="DetachmentMap">
+		SELECT * FROM(
+		SELECT ROWNUM RN,T1.*,T2.DP_RESP_SQUADRONNAME DP_RESP_SQUADRON FROM
+		DP_DETACHMENT T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_NAME LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC) T3
+		WHERE
+		T3.RN
+		BETWEEN
+		#{startIndex} AND #{endIndex}
+	</select>
+
+	<select id="findDetachmentCountByPagination" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		DP_DETACHMENT T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_NAME LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC
+	</select>
+</mapper>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.SysRoleMapperCustom">
+	<resultMap id="RoleResultMap" type="com.hd.software.dcaamsp.po.SysRoleCustom">
+		<result column="DP_RESP_ROLEID" property="dpRespRoleid"
+			jdbcType="NUMERIC" />
+		<result column="DP_RESP_NAME" property="dpRespName" jdbcType="VARCHAR" />
+		<result column="DP_RESP_AVAILABLE" property="dpRespAvailable"
+			jdbcType="CHAR" />
+	</resultMap>
+	<select id="findRoleGroup" resultMap="RoleResultMap">
+		select * from SYS_ROLE t
+	</select>
+
+</mapper>

@@ -1,48 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hd.software.dcaamsp.mapper.SysPermissionMapperCustom">
-
-
+	<resultMap id="PermissionMap"
+		type="com.hd.software.dcaamsp.po.SysPermissionCustom">
+		<result column="DP_RESP_CODE" property="dpRespCode" jdbcType="DECIMAL" />
+		<result column="DP_RESP_NAME" property="dpRespName" jdbcType="VARCHAR" />
+		<result column="DP_RESP_TYPE" property="dpRespType" jdbcType="VARCHAR" />
+		<result column="DP_RESP_PCODE" property="dpRespPcode" jdbcType="DECIMAL" />
+		<result column="DP_RESP_AVAILABLE" property="dpRespAvailable"
+			jdbcType="CHAR" />
+		<result column="DP_RESP_SORT" property="dpRespSort" jdbcType="VARCHAR" />
+		<result column="DP_RESP_PIDS" property="dpRespPids" jdbcType="VARCHAR" />
+	</resultMap>
 	<!-- 根据用户id查询url -->
-	<select id="findPermissionListByUserId" parameterType="string"
-		resultType="com.hd.software.dcaamsp.po.SysPermission">
+	<select id="findPermissionListByRoleId" parameterType="java.math.BigDecimal"
+		resultMap="com.hd.software.dcaamsp.mapper.SysPermissionMapper.BaseResultMap">
 		SELECT
 		*
 		FROM
 		sys_permission
-		WHERE TYPE = 'menu'
-		AND id IN
+		WHERE 
+		dp_resp_code IN
 		(SELECT
-		sys_permission_id
+		dp_resp_permissionid
 		FROM
 		sys_role_permission
-		WHERE sys_role_id IN
-		(SELECT
-		sys_role_id
-		FROM
-		sys_user_role
-		WHERE sys_user_id = #{id}))
+		WHERE
+		dp_resp_roleid= #{id}
+		)
 	</select>
 
 	<!-- 根据用户id查询菜单 -->
 	<select id="findMenuListByUserId" parameterType="string"
-		resultType="com.hd.software.dcaamsp.po.SysPermission">
-		SELECT
-		*
+		resultType="com.hd.software.dcaamsp.po.SysPermission"> SELECT * FROM sys_permission
+		WHERE dp_resp_type = 'menu'
+		AND dp_resp_code IN (SELECT
+		dp_resp_permissionid
 		FROM
-		sys_permission
-		WHERE TYPE = 'menu'
-		AND id IN
-		(SELECT
-		sys_permission_id
+		sys_role_permission WHERE dp_resp_roleid IN (SELECT dp_resp_roleid
 		FROM
-		sys_role_permission
-		WHERE sys_role_id IN
-		(SELECT
-		sys_role_id
-		FROM
-		sys_user_role
-		WHERE sys_user_id = #{id}))
+		sys_user_role WHERE dp_resp_userid = #{id}))
+	</select>
+
+	<select id="findPermissions" resultMap="PermissionMap">
+		select * from
+		SYS_PERMISSION 	WHERE dp_resp_code>0  order by dp_resp_code
 	</select>
 
 </mapper>

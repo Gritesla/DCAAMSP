@@ -1,237 +1,235 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hd.software.dcaamsp.mapper.SysUserMapper">
-	<resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.SysUser">
-		<id column="id" property="id" jdbcType="VARCHAR" />
-		<result column="usercode" property="usercode" jdbcType="VARCHAR" />
-		<result column="username" property="username" jdbcType="VARCHAR" />
-		<result column="password" property="password" jdbcType="VARCHAR" />
-		<result column="salt" property="salt" jdbcType="VARCHAR" />
-		<result column="locked" property="locked" jdbcType="CHAR" />
-	</resultMap>
-	<sql id="Example_Where_Clause">
-		<where>
-			<foreach collection="oredCriteria" item="criteria" separator="or">
-				<if test="criteria.valid">
-					<trim prefix="(" suffix=")" prefixOverrides="and">
-						<foreach collection="criteria.criteria" item="criterion">
-							<choose>
-								<when test="criterion.noValue">
-									and ${criterion.condition}
-								</when>
-								<when test="criterion.singleValue">
-									and ${criterion.condition} #{criterion.value}
-								</when>
-								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
-									#{criterion.secondValue}
-								</when>
-								<when test="criterion.listValue">
-									and ${criterion.condition}
-									<foreach collection="criterion.value" item="listItem"
-										open="(" close=")" separator=",">
-										#{listItem}
-									</foreach>
-								</when>
-							</choose>
-						</foreach>
-					</trim>
-				</if>
-			</foreach>
-		</where>
-	</sql>
-	<sql id="Update_By_Example_Where_Clause">
-		<where>
-			<foreach collection="example.oredCriteria" item="criteria"
-				separator="or">
-				<if test="criteria.valid">
-					<trim prefix="(" suffix=")" prefixOverrides="and">
-						<foreach collection="criteria.criteria" item="criterion">
-							<choose>
-								<when test="criterion.noValue">
-									and ${criterion.condition}
-								</when>
-								<when test="criterion.singleValue">
-									and ${criterion.condition} #{criterion.value}
-								</when>
-								<when test="criterion.betweenValue">
-									and ${criterion.condition} #{criterion.value} and
-									#{criterion.secondValue}
-								</when>
-								<when test="criterion.listValue">
-									and ${criterion.condition}
-									<foreach collection="criterion.value" item="listItem"
-										open="(" close=")" separator=",">
-										#{listItem}
-									</foreach>
-								</when>
-							</choose>
-						</foreach>
-					</trim>
-				</if>
-			</foreach>
-		</where>
-	</sql>
-	<sql id="Base_Column_List">
-		id, usercode, username, password, salt, locked
-	</sql>
-	<select id="selectByExample" resultMap="BaseResultMap"
-		parameterType="com.hd.software.dcaamsp.po.SysUserExample">
-		select
-		<if test="distinct">
-			distinct
-		</if>
-		<include refid="Base_Column_List" />
-		from sys_user
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-		<if test="orderByClause != null">
-			order by ${orderByClause}
-		</if>
-	</select>
-	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
-		parameterType="java.lang.String">
-		select
-		<include refid="Base_Column_List" />
-		from sys_user
-		where id = #{id,jdbcType=VARCHAR}
-	</select>
-	<delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-		delete from sys_user
-		where id = #{id,jdbcType=VARCHAR}
-	</delete>
-	<delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.SysUserExample">
-		delete from sys_user
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-	</delete>
-	<insert id="insert" parameterType="com.hd.software.dcaamsp.po.SysUser">
-		insert into sys_user (id, usercode, username,
-		password, salt, locked
-		)
-		values (#{id,jdbcType=VARCHAR}, #{usercode,jdbcType=VARCHAR},
-		#{username,jdbcType=VARCHAR},
-		#{password,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, #{locked,jdbcType=CHAR}
-		)
-	</insert>
-	<insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.SysUser">
-		insert into sys_user
-		<trim prefix="(" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				id,
-			</if>
-			<if test="usercode != null">
-				usercode,
-			</if>
-			<if test="username != null">
-				username,
-			</if>
-			<if test="password != null">
-				password,
-			</if>
-			<if test="salt != null">
-				salt,
-			</if>
-			<if test="locked != null">
-				locked,
-			</if>
-		</trim>
-		<trim prefix="values (" suffix=")" suffixOverrides=",">
-			<if test="id != null">
-				#{id,jdbcType=VARCHAR},
-			</if>
-			<if test="usercode != null">
-				#{usercode,jdbcType=VARCHAR},
-			</if>
-			<if test="username != null">
-				#{username,jdbcType=VARCHAR},
-			</if>
-			<if test="password != null">
-				#{password,jdbcType=VARCHAR},
-			</if>
-			<if test="salt != null">
-				#{salt,jdbcType=VARCHAR},
-			</if>
-			<if test="locked != null">
-				#{locked,jdbcType=CHAR},
-			</if>
-		</trim>
-	</insert>
-	<select id="countByExample" parameterType="com.hd.software.dcaamsp.po.SysUserExample"
-		resultType="java.lang.Integer">
-		select count(*) from sys_user
-		<if test="_parameter != null">
-			<include refid="Example_Where_Clause" />
-		</if>
-	</select>
-	<update id="updateByExampleSelective" parameterType="map">
-		update sys_user
-		<set>
-			<if test="record.id != null">
-				id = #{record.id,jdbcType=VARCHAR},
-			</if>
-			<if test="record.usercode != null">
-				usercode = #{record.usercode,jdbcType=VARCHAR},
-			</if>
-			<if test="record.username != null">
-				username = #{record.username,jdbcType=VARCHAR},
-			</if>
-			<if test="record.password != null">
-				password = #{record.password,jdbcType=VARCHAR},
-			</if>
-			<if test="record.salt != null">
-				salt = #{record.salt,jdbcType=VARCHAR},
-			</if>
-			<if test="record.locked != null">
-				locked = #{record.locked,jdbcType=CHAR},
-			</if>
-		</set>
-		<if test="_parameter != null">
-			<include refid="Update_By_Example_Where_Clause" />
-		</if>
-	</update>
-	<update id="updateByExample" parameterType="map">
-		update sys_user
-		set id = #{record.id,jdbcType=VARCHAR},
-		usercode = #{record.usercode,jdbcType=VARCHAR},
-		username = #{record.username,jdbcType=VARCHAR},
-		password = #{record.password,jdbcType=VARCHAR},
-		salt = #{record.salt,jdbcType=VARCHAR},
-		locked = #{record.locked,jdbcType=CHAR}
-		<if test="_parameter != null">
-			<include refid="Update_By_Example_Where_Clause" />
-		</if>
-	</update>
-	<update id="updateByPrimaryKeySelective" parameterType="com.hd.software.dcaamsp.po.SysUser">
-		update sys_user
-		<set>
-			<if test="usercode != null">
-				usercode = #{usercode,jdbcType=VARCHAR},
-			</if>
-			<if test="username != null">
-				username = #{username,jdbcType=VARCHAR},
-			</if>
-			<if test="password != null">
-				password = #{password,jdbcType=VARCHAR},
-			</if>
-			<if test="salt != null">
-				salt = #{salt,jdbcType=VARCHAR},
-			</if>
-			<if test="locked != null">
-				locked = #{locked,jdbcType=CHAR},
-			</if>
-		</set>
-		where id = #{id,jdbcType=VARCHAR}
-	</update>
-	<update id="updateByPrimaryKey" parameterType="com.hd.software.dcaamsp.po.SysUser">
-		update sys_user
-		set usercode = #{usercode,jdbcType=VARCHAR},
-		username = #{username,jdbcType=VARCHAR},
-		password = #{password,jdbcType=VARCHAR},
-		salt = #{salt,jdbcType=VARCHAR},
-		locked = #{locked,jdbcType=CHAR}
-		where id = #{id,jdbcType=VARCHAR}
-	</update>
+<mapper namespace="com.hd.software.dcaamsp.mapper.SysUserMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.SysUser" >
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_USERCODE" property="dpRespUsercode" jdbcType="VARCHAR" />
+    <result column="DP_RESP_USERNAME" property="dpRespUsername" jdbcType="VARCHAR" />
+    <result column="DP_RESP_PASSWORD" property="dpRespPassword" jdbcType="VARCHAR" />
+    <result column="DP_RESP_SALT" property="dpRespSalt" jdbcType="VARCHAR" />
+    <result column="DP_RESP_LOCK" property="dpRespLock" jdbcType="CHAR" />
+    <result column="DP_RESP_PLATFORM" property="dpRespPlatform" jdbcType="CHAR" />
+    <result column="DP_RESP_DEL" property="dpRespDel" jdbcType="CHAR" />
+    <result column="DP_RESP_SQUADRONID" property="dpRespSquadronid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ROLEID" property="dpRespRoleid" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_ID, DP_RESP_USERCODE, DP_RESP_USERNAME, DP_RESP_PASSWORD, DP_RESP_SALT, DP_RESP_LOCK, 
+    DP_RESP_PLATFORM, DP_RESP_DEL, DP_RESP_SQUADRONID, DP_RESP_ROLEID
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.SysUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.SysUserExample" >
+    delete from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.SysUser" >
+    insert into SYS_USER (DP_RESP_ID, DP_RESP_USERCODE, DP_RESP_USERNAME, 
+      DP_RESP_PASSWORD, DP_RESP_SALT, DP_RESP_LOCK, 
+      DP_RESP_PLATFORM, DP_RESP_DEL, DP_RESP_SQUADRONID, 
+      DP_RESP_ROLEID)
+    values (#{dpRespId,jdbcType=DECIMAL}, #{dpRespUsercode,jdbcType=VARCHAR}, #{dpRespUsername,jdbcType=VARCHAR}, 
+      #{dpRespPassword,jdbcType=VARCHAR}, #{dpRespSalt,jdbcType=VARCHAR}, #{dpRespLock,jdbcType=CHAR}, 
+      #{dpRespPlatform,jdbcType=CHAR}, #{dpRespDel,jdbcType=CHAR}, #{dpRespSquadronid,jdbcType=VARCHAR}, 
+      #{dpRespRoleid,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.SysUser" >
+    insert into SYS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        DP_RESP_ID,
+      </if>
+      <if test="dpRespUsercode != null" >
+        DP_RESP_USERCODE,
+      </if>
+      <if test="dpRespUsername != null" >
+        DP_RESP_USERNAME,
+      </if>
+      <if test="dpRespPassword != null" >
+        DP_RESP_PASSWORD,
+      </if>
+      <if test="dpRespSalt != null" >
+        DP_RESP_SALT,
+      </if>
+      <if test="dpRespLock != null" >
+        DP_RESP_LOCK,
+      </if>
+      <if test="dpRespPlatform != null" >
+        DP_RESP_PLATFORM,
+      </if>
+      <if test="dpRespDel != null" >
+        DP_RESP_DEL,
+      </if>
+      <if test="dpRespSquadronid != null" >
+        DP_RESP_SQUADRONID,
+      </if>
+      <if test="dpRespRoleid != null" >
+        DP_RESP_ROLEID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        #{dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespUsercode != null" >
+        #{dpRespUsercode,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespUsername != null" >
+        #{dpRespUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespPassword != null" >
+        #{dpRespPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespSalt != null" >
+        #{dpRespSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespLock != null" >
+        #{dpRespLock,jdbcType=CHAR},
+      </if>
+      <if test="dpRespPlatform != null" >
+        #{dpRespPlatform,jdbcType=CHAR},
+      </if>
+      <if test="dpRespDel != null" >
+        #{dpRespDel,jdbcType=CHAR},
+      </if>
+      <if test="dpRespSquadronid != null" >
+        #{dpRespSquadronid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespRoleid != null" >
+        #{dpRespRoleid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.SysUserExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_USER
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_USER
+    <set >
+      <if test="record.dpRespId != null" >
+        DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespUsercode != null" >
+        DP_RESP_USERCODE = #{record.dpRespUsercode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespUsername != null" >
+        DP_RESP_USERNAME = #{record.dpRespUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespPassword != null" >
+        DP_RESP_PASSWORD = #{record.dpRespPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespSalt != null" >
+        DP_RESP_SALT = #{record.dpRespSalt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespLock != null" >
+        DP_RESP_LOCK = #{record.dpRespLock,jdbcType=CHAR},
+      </if>
+      <if test="record.dpRespPlatform != null" >
+        DP_RESP_PLATFORM = #{record.dpRespPlatform,jdbcType=CHAR},
+      </if>
+      <if test="record.dpRespDel != null" >
+        DP_RESP_DEL = #{record.dpRespDel,jdbcType=CHAR},
+      </if>
+      <if test="record.dpRespSquadronid != null" >
+        DP_RESP_SQUADRONID = #{record.dpRespSquadronid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespRoleid != null" >
+        DP_RESP_ROLEID = #{record.dpRespRoleid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_USER
+    set DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      DP_RESP_USERCODE = #{record.dpRespUsercode,jdbcType=VARCHAR},
+      DP_RESP_USERNAME = #{record.dpRespUsername,jdbcType=VARCHAR},
+      DP_RESP_PASSWORD = #{record.dpRespPassword,jdbcType=VARCHAR},
+      DP_RESP_SALT = #{record.dpRespSalt,jdbcType=VARCHAR},
+      DP_RESP_LOCK = #{record.dpRespLock,jdbcType=CHAR},
+      DP_RESP_PLATFORM = #{record.dpRespPlatform,jdbcType=CHAR},
+      DP_RESP_DEL = #{record.dpRespDel,jdbcType=CHAR},
+      DP_RESP_SQUADRONID = #{record.dpRespSquadronid,jdbcType=VARCHAR},
+      DP_RESP_ROLEID = #{record.dpRespRoleid,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
 </mapper>

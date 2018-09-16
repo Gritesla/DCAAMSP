@@ -1,5 +1,6 @@
 package com.hd.software.dcaamsp.po;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,423 +105,683 @@ public class SysUserExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andIdIsNull() {
-            addCriterion("id is null");
+        public Criteria andDpRespIdIsNull() {
+            addCriterion("DP_RESP_ID is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdIsNotNull() {
-            addCriterion("id is not null");
+        public Criteria andDpRespIdIsNotNull() {
+            addCriterion("DP_RESP_ID is not null");
             return (Criteria) this;
         }
 
-        public Criteria andIdEqualTo(String value) {
-            addCriterion("id =", value, "id");
+        public Criteria andDpRespIdEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ID =", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotEqualTo(String value) {
-            addCriterion("id <>", value, "id");
+        public Criteria andDpRespIdNotEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ID <>", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThan(String value) {
-            addCriterion("id >", value, "id");
+        public Criteria andDpRespIdGreaterThan(BigDecimal value) {
+            addCriterion("DP_RESP_ID >", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdGreaterThanOrEqualTo(String value) {
-            addCriterion("id >=", value, "id");
+        public Criteria andDpRespIdGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ID >=", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThan(String value) {
-            addCriterion("id <", value, "id");
+        public Criteria andDpRespIdLessThan(BigDecimal value) {
+            addCriterion("DP_RESP_ID <", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLessThanOrEqualTo(String value) {
-            addCriterion("id <=", value, "id");
+        public Criteria andDpRespIdLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ID <=", value, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdLike(String value) {
-            addCriterion("id like", value, "id");
+        public Criteria andDpRespIdIn(List<BigDecimal> values) {
+            addCriterion("DP_RESP_ID in", values, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotLike(String value) {
-            addCriterion("id not like", value, "id");
+        public Criteria andDpRespIdNotIn(List<BigDecimal> values) {
+            addCriterion("DP_RESP_ID not in", values, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdIn(List<String> values) {
-            addCriterion("id in", values, "id");
+        public Criteria andDpRespIdBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DP_RESP_ID between", value1, value2, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotIn(List<String> values) {
-            addCriterion("id not in", values, "id");
+        public Criteria andDpRespIdNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DP_RESP_ID not between", value1, value2, "dpRespId");
             return (Criteria) this;
         }
 
-        public Criteria andIdBetween(String value1, String value2) {
-            addCriterion("id between", value1, value2, "id");
+        public Criteria andDpRespUsercodeIsNull() {
+            addCriterion("DP_RESP_USERCODE is null");
             return (Criteria) this;
         }
 
-        public Criteria andIdNotBetween(String value1, String value2) {
-            addCriterion("id not between", value1, value2, "id");
+        public Criteria andDpRespUsercodeIsNotNull() {
+            addCriterion("DP_RESP_USERCODE is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeIsNull() {
-            addCriterion("usercode is null");
+        public Criteria andDpRespUsercodeEqualTo(String value) {
+            addCriterion("DP_RESP_USERCODE =", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeIsNotNull() {
-            addCriterion("usercode is not null");
+        public Criteria andDpRespUsercodeNotEqualTo(String value) {
+            addCriterion("DP_RESP_USERCODE <>", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeEqualTo(String value) {
-            addCriterion("usercode =", value, "usercode");
+        public Criteria andDpRespUsercodeGreaterThan(String value) {
+            addCriterion("DP_RESP_USERCODE >", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeNotEqualTo(String value) {
-            addCriterion("usercode <>", value, "usercode");
+        public Criteria andDpRespUsercodeGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_USERCODE >=", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeGreaterThan(String value) {
-            addCriterion("usercode >", value, "usercode");
+        public Criteria andDpRespUsercodeLessThan(String value) {
+            addCriterion("DP_RESP_USERCODE <", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeGreaterThanOrEqualTo(String value) {
-            addCriterion("usercode >=", value, "usercode");
+        public Criteria andDpRespUsercodeLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_USERCODE <=", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeLessThan(String value) {
-            addCriterion("usercode <", value, "usercode");
+        public Criteria andDpRespUsercodeLike(String value) {
+            addCriterion("DP_RESP_USERCODE like", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeLessThanOrEqualTo(String value) {
-            addCriterion("usercode <=", value, "usercode");
+        public Criteria andDpRespUsercodeNotLike(String value) {
+            addCriterion("DP_RESP_USERCODE not like", value, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeLike(String value) {
-            addCriterion("usercode like", value, "usercode");
+        public Criteria andDpRespUsercodeIn(List<String> values) {
+            addCriterion("DP_RESP_USERCODE in", values, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeNotLike(String value) {
-            addCriterion("usercode not like", value, "usercode");
+        public Criteria andDpRespUsercodeNotIn(List<String> values) {
+            addCriterion("DP_RESP_USERCODE not in", values, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeIn(List<String> values) {
-            addCriterion("usercode in", values, "usercode");
+        public Criteria andDpRespUsercodeBetween(String value1, String value2) {
+            addCriterion("DP_RESP_USERCODE between", value1, value2, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeNotIn(List<String> values) {
-            addCriterion("usercode not in", values, "usercode");
+        public Criteria andDpRespUsercodeNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_USERCODE not between", value1, value2, "dpRespUsercode");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeBetween(String value1, String value2) {
-            addCriterion("usercode between", value1, value2, "usercode");
+        public Criteria andDpRespUsernameIsNull() {
+            addCriterion("DP_RESP_USERNAME is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsercodeNotBetween(String value1, String value2) {
-            addCriterion("usercode not between", value1, value2, "usercode");
+        public Criteria andDpRespUsernameIsNotNull() {
+            addCriterion("DP_RESP_USERNAME is not null");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIsNull() {
-            addCriterion("username is null");
+        public Criteria andDpRespUsernameEqualTo(String value) {
+            addCriterion("DP_RESP_USERNAME =", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIsNotNull() {
-            addCriterion("username is not null");
+        public Criteria andDpRespUsernameNotEqualTo(String value) {
+            addCriterion("DP_RESP_USERNAME <>", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameEqualTo(String value) {
-            addCriterion("username =", value, "username");
+        public Criteria andDpRespUsernameGreaterThan(String value) {
+            addCriterion("DP_RESP_USERNAME >", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotEqualTo(String value) {
-            addCriterion("username <>", value, "username");
+        public Criteria andDpRespUsernameGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_USERNAME >=", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThan(String value) {
-            addCriterion("username >", value, "username");
+        public Criteria andDpRespUsernameLessThan(String value) {
+            addCriterion("DP_RESP_USERNAME <", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameGreaterThanOrEqualTo(String value) {
-            addCriterion("username >=", value, "username");
+        public Criteria andDpRespUsernameLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_USERNAME <=", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThan(String value) {
-            addCriterion("username <", value, "username");
+        public Criteria andDpRespUsernameLike(String value) {
+            addCriterion("DP_RESP_USERNAME like", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLessThanOrEqualTo(String value) {
-            addCriterion("username <=", value, "username");
+        public Criteria andDpRespUsernameNotLike(String value) {
+            addCriterion("DP_RESP_USERNAME not like", value, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameLike(String value) {
-            addCriterion("username like", value, "username");
+        public Criteria andDpRespUsernameIn(List<String> values) {
+            addCriterion("DP_RESP_USERNAME in", values, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotLike(String value) {
-            addCriterion("username not like", value, "username");
+        public Criteria andDpRespUsernameNotIn(List<String> values) {
+            addCriterion("DP_RESP_USERNAME not in", values, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameIn(List<String> values) {
-            addCriterion("username in", values, "username");
+        public Criteria andDpRespUsernameBetween(String value1, String value2) {
+            addCriterion("DP_RESP_USERNAME between", value1, value2, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotIn(List<String> values) {
-            addCriterion("username not in", values, "username");
+        public Criteria andDpRespUsernameNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_USERNAME not between", value1, value2, "dpRespUsername");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameBetween(String value1, String value2) {
-            addCriterion("username between", value1, value2, "username");
+        public Criteria andDpRespPasswordIsNull() {
+            addCriterion("DP_RESP_PASSWORD is null");
             return (Criteria) this;
         }
 
-        public Criteria andUsernameNotBetween(String value1, String value2) {
-            addCriterion("username not between", value1, value2, "username");
+        public Criteria andDpRespPasswordIsNotNull() {
+            addCriterion("DP_RESP_PASSWORD is not null");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNull() {
-            addCriterion("password is null");
+        public Criteria andDpRespPasswordEqualTo(String value) {
+            addCriterion("DP_RESP_PASSWORD =", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIsNotNull() {
-            addCriterion("password is not null");
+        public Criteria andDpRespPasswordNotEqualTo(String value) {
+            addCriterion("DP_RESP_PASSWORD <>", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordEqualTo(String value) {
-            addCriterion("password =", value, "password");
+        public Criteria andDpRespPasswordGreaterThan(String value) {
+            addCriterion("DP_RESP_PASSWORD >", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotEqualTo(String value) {
-            addCriterion("password <>", value, "password");
+        public Criteria andDpRespPasswordGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_PASSWORD >=", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThan(String value) {
-            addCriterion("password >", value, "password");
+        public Criteria andDpRespPasswordLessThan(String value) {
+            addCriterion("DP_RESP_PASSWORD <", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordGreaterThanOrEqualTo(String value) {
-            addCriterion("password >=", value, "password");
+        public Criteria andDpRespPasswordLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_PASSWORD <=", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThan(String value) {
-            addCriterion("password <", value, "password");
+        public Criteria andDpRespPasswordLike(String value) {
+            addCriterion("DP_RESP_PASSWORD like", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLessThanOrEqualTo(String value) {
-            addCriterion("password <=", value, "password");
+        public Criteria andDpRespPasswordNotLike(String value) {
+            addCriterion("DP_RESP_PASSWORD not like", value, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordLike(String value) {
-            addCriterion("password like", value, "password");
+        public Criteria andDpRespPasswordIn(List<String> values) {
+            addCriterion("DP_RESP_PASSWORD in", values, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotLike(String value) {
-            addCriterion("password not like", value, "password");
+        public Criteria andDpRespPasswordNotIn(List<String> values) {
+            addCriterion("DP_RESP_PASSWORD not in", values, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordIn(List<String> values) {
-            addCriterion("password in", values, "password");
+        public Criteria andDpRespPasswordBetween(String value1, String value2) {
+            addCriterion("DP_RESP_PASSWORD between", value1, value2, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotIn(List<String> values) {
-            addCriterion("password not in", values, "password");
+        public Criteria andDpRespPasswordNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_PASSWORD not between", value1, value2, "dpRespPassword");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordBetween(String value1, String value2) {
-            addCriterion("password between", value1, value2, "password");
+        public Criteria andDpRespSaltIsNull() {
+            addCriterion("DP_RESP_SALT is null");
             return (Criteria) this;
         }
 
-        public Criteria andPasswordNotBetween(String value1, String value2) {
-            addCriterion("password not between", value1, value2, "password");
+        public Criteria andDpRespSaltIsNotNull() {
+            addCriterion("DP_RESP_SALT is not null");
             return (Criteria) this;
         }
 
-        public Criteria andSaltIsNull() {
-            addCriterion("salt is null");
+        public Criteria andDpRespSaltEqualTo(String value) {
+            addCriterion("DP_RESP_SALT =", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltIsNotNull() {
-            addCriterion("salt is not null");
+        public Criteria andDpRespSaltNotEqualTo(String value) {
+            addCriterion("DP_RESP_SALT <>", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltEqualTo(String value) {
-            addCriterion("salt =", value, "salt");
+        public Criteria andDpRespSaltGreaterThan(String value) {
+            addCriterion("DP_RESP_SALT >", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltNotEqualTo(String value) {
-            addCriterion("salt <>", value, "salt");
+        public Criteria andDpRespSaltGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_SALT >=", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltGreaterThan(String value) {
-            addCriterion("salt >", value, "salt");
+        public Criteria andDpRespSaltLessThan(String value) {
+            addCriterion("DP_RESP_SALT <", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltGreaterThanOrEqualTo(String value) {
-            addCriterion("salt >=", value, "salt");
+        public Criteria andDpRespSaltLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_SALT <=", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltLessThan(String value) {
-            addCriterion("salt <", value, "salt");
+        public Criteria andDpRespSaltLike(String value) {
+            addCriterion("DP_RESP_SALT like", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltLessThanOrEqualTo(String value) {
-            addCriterion("salt <=", value, "salt");
+        public Criteria andDpRespSaltNotLike(String value) {
+            addCriterion("DP_RESP_SALT not like", value, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltLike(String value) {
-            addCriterion("salt like", value, "salt");
+        public Criteria andDpRespSaltIn(List<String> values) {
+            addCriterion("DP_RESP_SALT in", values, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltNotLike(String value) {
-            addCriterion("salt not like", value, "salt");
+        public Criteria andDpRespSaltNotIn(List<String> values) {
+            addCriterion("DP_RESP_SALT not in", values, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltIn(List<String> values) {
-            addCriterion("salt in", values, "salt");
+        public Criteria andDpRespSaltBetween(String value1, String value2) {
+            addCriterion("DP_RESP_SALT between", value1, value2, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltNotIn(List<String> values) {
-            addCriterion("salt not in", values, "salt");
+        public Criteria andDpRespSaltNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_SALT not between", value1, value2, "dpRespSalt");
             return (Criteria) this;
         }
 
-        public Criteria andSaltBetween(String value1, String value2) {
-            addCriterion("salt between", value1, value2, "salt");
+        public Criteria andDpRespLockIsNull() {
+            addCriterion("DP_RESP_LOCK is null");
             return (Criteria) this;
         }
 
-        public Criteria andSaltNotBetween(String value1, String value2) {
-            addCriterion("salt not between", value1, value2, "salt");
+        public Criteria andDpRespLockIsNotNull() {
+            addCriterion("DP_RESP_LOCK is not null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNull() {
-            addCriterion("locked is null");
+        public Criteria andDpRespLockEqualTo(String value) {
+            addCriterion("DP_RESP_LOCK =", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIsNotNull() {
-            addCriterion("locked is not null");
+        public Criteria andDpRespLockNotEqualTo(String value) {
+            addCriterion("DP_RESP_LOCK <>", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedEqualTo(String value) {
-            addCriterion("locked =", value, "locked");
+        public Criteria andDpRespLockGreaterThan(String value) {
+            addCriterion("DP_RESP_LOCK >", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotEqualTo(String value) {
-            addCriterion("locked <>", value, "locked");
+        public Criteria andDpRespLockGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_LOCK >=", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThan(String value) {
-            addCriterion("locked >", value, "locked");
+        public Criteria andDpRespLockLessThan(String value) {
+            addCriterion("DP_RESP_LOCK <", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedGreaterThanOrEqualTo(String value) {
-            addCriterion("locked >=", value, "locked");
+        public Criteria andDpRespLockLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_LOCK <=", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThan(String value) {
-            addCriterion("locked <", value, "locked");
+        public Criteria andDpRespLockLike(String value) {
+            addCriterion("DP_RESP_LOCK like", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLessThanOrEqualTo(String value) {
-            addCriterion("locked <=", value, "locked");
+        public Criteria andDpRespLockNotLike(String value) {
+            addCriterion("DP_RESP_LOCK not like", value, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedLike(String value) {
-            addCriterion("locked like", value, "locked");
+        public Criteria andDpRespLockIn(List<String> values) {
+            addCriterion("DP_RESP_LOCK in", values, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotLike(String value) {
-            addCriterion("locked not like", value, "locked");
+        public Criteria andDpRespLockNotIn(List<String> values) {
+            addCriterion("DP_RESP_LOCK not in", values, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedIn(List<String> values) {
-            addCriterion("locked in", values, "locked");
+        public Criteria andDpRespLockBetween(String value1, String value2) {
+            addCriterion("DP_RESP_LOCK between", value1, value2, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotIn(List<String> values) {
-            addCriterion("locked not in", values, "locked");
+        public Criteria andDpRespLockNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_LOCK not between", value1, value2, "dpRespLock");
             return (Criteria) this;
         }
 
-        public Criteria andLockedBetween(String value1, String value2) {
-            addCriterion("locked between", value1, value2, "locked");
+        public Criteria andDpRespPlatformIsNull() {
+            addCriterion("DP_RESP_PLATFORM is null");
             return (Criteria) this;
         }
 
-        public Criteria andLockedNotBetween(String value1, String value2) {
-            addCriterion("locked not between", value1, value2, "locked");
+        public Criteria andDpRespPlatformIsNotNull() {
+            addCriterion("DP_RESP_PLATFORM is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformEqualTo(String value) {
+            addCriterion("DP_RESP_PLATFORM =", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformNotEqualTo(String value) {
+            addCriterion("DP_RESP_PLATFORM <>", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformGreaterThan(String value) {
+            addCriterion("DP_RESP_PLATFORM >", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_PLATFORM >=", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformLessThan(String value) {
+            addCriterion("DP_RESP_PLATFORM <", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_PLATFORM <=", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformLike(String value) {
+            addCriterion("DP_RESP_PLATFORM like", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformNotLike(String value) {
+            addCriterion("DP_RESP_PLATFORM not like", value, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformIn(List<String> values) {
+            addCriterion("DP_RESP_PLATFORM in", values, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformNotIn(List<String> values) {
+            addCriterion("DP_RESP_PLATFORM not in", values, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformBetween(String value1, String value2) {
+            addCriterion("DP_RESP_PLATFORM between", value1, value2, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespPlatformNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_PLATFORM not between", value1, value2, "dpRespPlatform");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelIsNull() {
+            addCriterion("DP_RESP_DEL is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelIsNotNull() {
+            addCriterion("DP_RESP_DEL is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelEqualTo(String value) {
+            addCriterion("DP_RESP_DEL =", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelNotEqualTo(String value) {
+            addCriterion("DP_RESP_DEL <>", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelGreaterThan(String value) {
+            addCriterion("DP_RESP_DEL >", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_DEL >=", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelLessThan(String value) {
+            addCriterion("DP_RESP_DEL <", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_DEL <=", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelLike(String value) {
+            addCriterion("DP_RESP_DEL like", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelNotLike(String value) {
+            addCriterion("DP_RESP_DEL not like", value, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelIn(List<String> values) {
+            addCriterion("DP_RESP_DEL in", values, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelNotIn(List<String> values) {
+            addCriterion("DP_RESP_DEL not in", values, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelBetween(String value1, String value2) {
+            addCriterion("DP_RESP_DEL between", value1, value2, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespDelNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_DEL not between", value1, value2, "dpRespDel");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidIsNull() {
+            addCriterion("DP_RESP_SQUADRONID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidIsNotNull() {
+            addCriterion("DP_RESP_SQUADRONID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidEqualTo(String value) {
+            addCriterion("DP_RESP_SQUADRONID =", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidNotEqualTo(String value) {
+            addCriterion("DP_RESP_SQUADRONID <>", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidGreaterThan(String value) {
+            addCriterion("DP_RESP_SQUADRONID >", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidGreaterThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_SQUADRONID >=", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidLessThan(String value) {
+            addCriterion("DP_RESP_SQUADRONID <", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidLessThanOrEqualTo(String value) {
+            addCriterion("DP_RESP_SQUADRONID <=", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidLike(String value) {
+            addCriterion("DP_RESP_SQUADRONID like", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidNotLike(String value) {
+            addCriterion("DP_RESP_SQUADRONID not like", value, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidIn(List<String> values) {
+            addCriterion("DP_RESP_SQUADRONID in", values, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidNotIn(List<String> values) {
+            addCriterion("DP_RESP_SQUADRONID not in", values, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidBetween(String value1, String value2) {
+            addCriterion("DP_RESP_SQUADRONID between", value1, value2, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespSquadronidNotBetween(String value1, String value2) {
+            addCriterion("DP_RESP_SQUADRONID not between", value1, value2, "dpRespSquadronid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidIsNull() {
+            addCriterion("DP_RESP_ROLEID is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidIsNotNull() {
+            addCriterion("DP_RESP_ROLEID is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID =", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidNotEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID <>", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidGreaterThan(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID >", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidGreaterThanOrEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID >=", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidLessThan(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID <", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidLessThanOrEqualTo(BigDecimal value) {
+            addCriterion("DP_RESP_ROLEID <=", value, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidIn(List<BigDecimal> values) {
+            addCriterion("DP_RESP_ROLEID in", values, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidNotIn(List<BigDecimal> values) {
+            addCriterion("DP_RESP_ROLEID not in", values, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DP_RESP_ROLEID between", value1, value2, "dpRespRoleid");
+            return (Criteria) this;
+        }
+
+        public Criteria andDpRespRoleidNotBetween(BigDecimal value1, BigDecimal value2) {
+            addCriterion("DP_RESP_ROLEID not between", value1, value2, "dpRespRoleid");
             return (Criteria) this;
         }
     }

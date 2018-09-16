@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpImportantMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.DpImportant" >
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_DWMC" property="dpRespDwmc" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FRDB" property="dpRespFrdb" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FRDBDH" property="dpRespFrdbdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQZRR" property="dpRespAqzrr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQZRRDH" property="dpRespAqzrrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDZYX" property="dpRespDwdzyx" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQGLR" property="dpRespAqglr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AQGLRDH" property="dpRespAqglrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ZJZXFGLR" property="dpRespZjzxfglr" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ZJZXFGLRDH" property="dpRespZjzxfglrdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDZ" property="dpRespDwdz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWDH" property="dpRespDwdh" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DLWZ" property="dpRespDlwz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DWLB" property="dpRespDwlb" jdbcType="VARCHAR" />
+    <result column="DP_RESP_BZ" property="dpRespBz" jdbcType="VARCHAR" />
+    <result column="DP_RESP_GIS_X" property="dpRespGisX" jdbcType="VARCHAR" />
+    <result column="DP_RESP_GIS_Y" property="dpRespGisY" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DETACHMENTID" property="dpRespDetachmentid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_HGYQ" property="dpRespHgyq" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_ID, DP_RESP_DWMC, DP_RESP_FRDB, DP_RESP_FRDBDH, DP_RESP_AQZRR, DP_RESP_AQZRRDH, 
+    DP_RESP_DWDZYX, DP_RESP_AQGLR, DP_RESP_AQGLRDH, DP_RESP_ZJZXFGLR, DP_RESP_ZJZXFGLRDH, 
+    DP_RESP_DWDZ, DP_RESP_DWDH, DP_RESP_DLWZ, DP_RESP_DWLB, DP_RESP_BZ, DP_RESP_GIS_X, 
+    DP_RESP_GIS_Y, DP_RESP_DETACHMENTID, DP_RESP_HGYQ
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.DpImportantExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DP_IMPORTANT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.DpImportantExample" >
+    delete from DP_IMPORTANT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.DpImportant" >
+    insert into DP_IMPORTANT (DP_RESP_ID, DP_RESP_DWMC, DP_RESP_FRDB, 
+      DP_RESP_FRDBDH, DP_RESP_AQZRR, DP_RESP_AQZRRDH, 
+      DP_RESP_DWDZYX, DP_RESP_AQGLR, DP_RESP_AQGLRDH, 
+      DP_RESP_ZJZXFGLR, DP_RESP_ZJZXFGLRDH, DP_RESP_DWDZ, 
+      DP_RESP_DWDH, DP_RESP_DLWZ, DP_RESP_DWLB, 
+      DP_RESP_BZ, DP_RESP_GIS_X, DP_RESP_GIS_Y, 
+      DP_RESP_DETACHMENTID, DP_RESP_HGYQ)
+    values (#{dpRespId,jdbcType=DECIMAL}, #{dpRespDwmc,jdbcType=VARCHAR}, #{dpRespFrdb,jdbcType=VARCHAR}, 
+      #{dpRespFrdbdh,jdbcType=VARCHAR}, #{dpRespAqzrr,jdbcType=VARCHAR}, #{dpRespAqzrrdh,jdbcType=VARCHAR}, 
+      #{dpRespDwdzyx,jdbcType=VARCHAR}, #{dpRespAqglr,jdbcType=VARCHAR}, #{dpRespAqglrdh,jdbcType=VARCHAR}, 
+      #{dpRespZjzxfglr,jdbcType=VARCHAR}, #{dpRespZjzxfglrdh,jdbcType=VARCHAR}, #{dpRespDwdz,jdbcType=VARCHAR}, 
+      #{dpRespDwdh,jdbcType=VARCHAR}, #{dpRespDlwz,jdbcType=VARCHAR}, #{dpRespDwlb,jdbcType=VARCHAR}, 
+      #{dpRespBz,jdbcType=VARCHAR}, #{dpRespGisX,jdbcType=VARCHAR}, #{dpRespGisY,jdbcType=VARCHAR}, 
+      #{dpRespDetachmentid,jdbcType=VARCHAR}, #{dpRespHgyq,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.DpImportant" >
+    insert into DP_IMPORTANT
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        DP_RESP_ID,
+      </if>
+      <if test="dpRespDwmc != null" >
+        DP_RESP_DWMC,
+      </if>
+      <if test="dpRespFrdb != null" >
+        DP_RESP_FRDB,
+      </if>
+      <if test="dpRespFrdbdh != null" >
+        DP_RESP_FRDBDH,
+      </if>
+      <if test="dpRespAqzrr != null" >
+        DP_RESP_AQZRR,
+      </if>
+      <if test="dpRespAqzrrdh != null" >
+        DP_RESP_AQZRRDH,
+      </if>
+      <if test="dpRespDwdzyx != null" >
+        DP_RESP_DWDZYX,
+      </if>
+      <if test="dpRespAqglr != null" >
+        DP_RESP_AQGLR,
+      </if>
+      <if test="dpRespAqglrdh != null" >
+        DP_RESP_AQGLRDH,
+      </if>
+      <if test="dpRespZjzxfglr != null" >
+        DP_RESP_ZJZXFGLR,
+      </if>
+      <if test="dpRespZjzxfglrdh != null" >
+        DP_RESP_ZJZXFGLRDH,
+      </if>
+      <if test="dpRespDwdz != null" >
+        DP_RESP_DWDZ,
+      </if>
+      <if test="dpRespDwdh != null" >
+        DP_RESP_DWDH,
+      </if>
+      <if test="dpRespDlwz != null" >
+        DP_RESP_DLWZ,
+      </if>
+      <if test="dpRespDwlb != null" >
+        DP_RESP_DWLB,
+      </if>
+      <if test="dpRespBz != null" >
+        DP_RESP_BZ,
+      </if>
+      <if test="dpRespGisX != null" >
+        DP_RESP_GIS_X,
+      </if>
+      <if test="dpRespGisY != null" >
+        DP_RESP_GIS_Y,
+      </if>
+      <if test="dpRespDetachmentid != null" >
+        DP_RESP_DETACHMENTID,
+      </if>
+      <if test="dpRespHgyq != null" >
+        DP_RESP_HGYQ,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        #{dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespDwmc != null" >
+        #{dpRespDwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespFrdb != null" >
+        #{dpRespFrdb,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespFrdbdh != null" >
+        #{dpRespFrdbdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAqzrr != null" >
+        #{dpRespAqzrr,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAqzrrdh != null" >
+        #{dpRespAqzrrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDwdzyx != null" >
+        #{dpRespDwdzyx,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAqglr != null" >
+        #{dpRespAqglr,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAqglrdh != null" >
+        #{dpRespAqglrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespZjzxfglr != null" >
+        #{dpRespZjzxfglr,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespZjzxfglrdh != null" >
+        #{dpRespZjzxfglrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDwdz != null" >
+        #{dpRespDwdz,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDwdh != null" >
+        #{dpRespDwdh,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDlwz != null" >
+        #{dpRespDlwz,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDwlb != null" >
+        #{dpRespDwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespBz != null" >
+        #{dpRespBz,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespGisX != null" >
+        #{dpRespGisX,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespGisY != null" >
+        #{dpRespGisY,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDetachmentid != null" >
+        #{dpRespDetachmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespHgyq != null" >
+        #{dpRespHgyq,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.DpImportantExample" resultType="java.lang.Integer" >
+    select count(*) from DP_IMPORTANT
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DP_IMPORTANT
+    <set >
+      <if test="record.dpRespId != null" >
+        DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespDwmc != null" >
+        DP_RESP_DWMC = #{record.dpRespDwmc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespFrdb != null" >
+        DP_RESP_FRDB = #{record.dpRespFrdb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespFrdbdh != null" >
+        DP_RESP_FRDBDH = #{record.dpRespFrdbdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAqzrr != null" >
+        DP_RESP_AQZRR = #{record.dpRespAqzrr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAqzrrdh != null" >
+        DP_RESP_AQZRRDH = #{record.dpRespAqzrrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDwdzyx != null" >
+        DP_RESP_DWDZYX = #{record.dpRespDwdzyx,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAqglr != null" >
+        DP_RESP_AQGLR = #{record.dpRespAqglr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAqglrdh != null" >
+        DP_RESP_AQGLRDH = #{record.dpRespAqglrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespZjzxfglr != null" >
+        DP_RESP_ZJZXFGLR = #{record.dpRespZjzxfglr,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespZjzxfglrdh != null" >
+        DP_RESP_ZJZXFGLRDH = #{record.dpRespZjzxfglrdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDwdz != null" >
+        DP_RESP_DWDZ = #{record.dpRespDwdz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDwdh != null" >
+        DP_RESP_DWDH = #{record.dpRespDwdh,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDlwz != null" >
+        DP_RESP_DLWZ = #{record.dpRespDlwz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDwlb != null" >
+        DP_RESP_DWLB = #{record.dpRespDwlb,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespBz != null" >
+        DP_RESP_BZ = #{record.dpRespBz,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespGisX != null" >
+        DP_RESP_GIS_X = #{record.dpRespGisX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespGisY != null" >
+        DP_RESP_GIS_Y = #{record.dpRespGisY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDetachmentid != null" >
+        DP_RESP_DETACHMENTID = #{record.dpRespDetachmentid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespHgyq != null" >
+        DP_RESP_HGYQ = #{record.dpRespHgyq,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DP_IMPORTANT
+    set DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      DP_RESP_DWMC = #{record.dpRespDwmc,jdbcType=VARCHAR},
+      DP_RESP_FRDB = #{record.dpRespFrdb,jdbcType=VARCHAR},
+      DP_RESP_FRDBDH = #{record.dpRespFrdbdh,jdbcType=VARCHAR},
+      DP_RESP_AQZRR = #{record.dpRespAqzrr,jdbcType=VARCHAR},
+      DP_RESP_AQZRRDH = #{record.dpRespAqzrrdh,jdbcType=VARCHAR},
+      DP_RESP_DWDZYX = #{record.dpRespDwdzyx,jdbcType=VARCHAR},
+      DP_RESP_AQGLR = #{record.dpRespAqglr,jdbcType=VARCHAR},
+      DP_RESP_AQGLRDH = #{record.dpRespAqglrdh,jdbcType=VARCHAR},
+      DP_RESP_ZJZXFGLR = #{record.dpRespZjzxfglr,jdbcType=VARCHAR},
+      DP_RESP_ZJZXFGLRDH = #{record.dpRespZjzxfglrdh,jdbcType=VARCHAR},
+      DP_RESP_DWDZ = #{record.dpRespDwdz,jdbcType=VARCHAR},
+      DP_RESP_DWDH = #{record.dpRespDwdh,jdbcType=VARCHAR},
+      DP_RESP_DLWZ = #{record.dpRespDlwz,jdbcType=VARCHAR},
+      DP_RESP_DWLB = #{record.dpRespDwlb,jdbcType=VARCHAR},
+      DP_RESP_BZ = #{record.dpRespBz,jdbcType=VARCHAR},
+      DP_RESP_GIS_X = #{record.dpRespGisX,jdbcType=VARCHAR},
+      DP_RESP_GIS_Y = #{record.dpRespGisY,jdbcType=VARCHAR},
+      DP_RESP_DETACHMENTID = #{record.dpRespDetachmentid,jdbcType=VARCHAR},
+      DP_RESP_HGYQ = #{record.dpRespHgyq,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

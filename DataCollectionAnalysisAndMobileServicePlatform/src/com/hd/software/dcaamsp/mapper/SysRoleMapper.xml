@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.SysRoleMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.SysRole" >
+    <result column="DP_RESP_ROLEID" property="dpRespRoleid" jdbcType="DECIMAL" />
+    <result column="DP_RESP_NAME" property="dpRespName" jdbcType="VARCHAR" />
+    <result column="DP_RESP_AVAILABLE" property="dpRespAvailable" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_ROLEID, DP_RESP_NAME, DP_RESP_AVAILABLE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.SysRoleExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SYS_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.SysRoleExample" >
+    delete from SYS_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.SysRole" >
+    insert into SYS_ROLE (DP_RESP_ROLEID, DP_RESP_NAME, DP_RESP_AVAILABLE
+      )
+    values (#{dpRespRoleid,jdbcType=DECIMAL}, #{dpRespName,jdbcType=VARCHAR}, #{dpRespAvailable,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.SysRole" >
+    insert into SYS_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespRoleid != null" >
+        DP_RESP_ROLEID,
+      </if>
+      <if test="dpRespName != null" >
+        DP_RESP_NAME,
+      </if>
+      <if test="dpRespAvailable != null" >
+        DP_RESP_AVAILABLE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespRoleid != null" >
+        #{dpRespRoleid,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespName != null" >
+        #{dpRespName,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAvailable != null" >
+        #{dpRespAvailable,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.SysRoleExample" resultType="java.lang.Integer" >
+    select count(*) from SYS_ROLE
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SYS_ROLE
+    <set >
+      <if test="record.dpRespRoleid != null" >
+        DP_RESP_ROLEID = #{record.dpRespRoleid,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespName != null" >
+        DP_RESP_NAME = #{record.dpRespName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAvailable != null" >
+        DP_RESP_AVAILABLE = #{record.dpRespAvailable,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SYS_ROLE
+    set DP_RESP_ROLEID = #{record.dpRespRoleid,jdbcType=DECIMAL},
+      DP_RESP_NAME = #{record.dpRespName,jdbcType=VARCHAR},
+      DP_RESP_AVAILABLE = #{record.dpRespAvailable,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

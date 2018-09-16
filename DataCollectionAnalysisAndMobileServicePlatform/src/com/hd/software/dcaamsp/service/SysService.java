@@ -1,5 +1,6 @@
 package com.hd.software.dcaamsp.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.hd.software.dcaamsp.po.ActiveUser;
@@ -21,8 +22,8 @@ public interface SysService {
 	public SysUser findSysUserByUserCode(String userCode)throws Exception;
 	
 	//根据用户id查询权限范围的菜单
-	public List<SysPermission> findMenuListByUserId(String userid) throws Exception;
+	public List<SysPermission> findMenuListByUserId(BigDecimal userid) throws Exception;
 	
 	//根据用户id查询权限范围的url
-	public List<SysPermission> findPermissionListByUserId(String userid) throws Exception;
+	public List<SysPermission> findPermissionListByRoleId(BigDecimal roleid) throws Exception;
 }

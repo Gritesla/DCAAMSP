@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpBasicplanMapperCustom">
+	<resultMap id="BasicMap" type="com.hd.software.dcaamsp.po.DpBasicplan">
+		<id column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+		<result column="DP_RESP_IDENTIFIER" property="dpRespIdentifier"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_DATE" property="dpRespDate" jdbcType="VARCHAR" />
+		<result column="DP_RESP_PLANNAME" property="dpRespPlanname"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_COMPANYNAME" property="dpRespCompanyname"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_CONTACT" property="dpRespContact"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_PATH" property="dpRespPath" jdbcType="VARCHAR" />
+		<result column="DP_RESP_DETACHMENTID" property="dpRespDetachmentid"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_DETACHNAME" property="dpRespDetachname"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_SQUADRONNAME" property="dpRespSquadronname"
+			jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="fineSmallplacesByPagination" resultMap="BasicMap">
+
+		SELECT *
+		FROM(
+		SELECT ROWNUM RN,T1.*
+		FROM
+		DP_BASICPLAN T1
+		WHERE
+		T1.DP_RESP_PLANNAME
+		LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC) T3
+		WHERE
+		T3.RN
+		BETWEEN
+		#{startIndex} AND #{endIndex}
+	</select>
+
+
+	<select id="findSmallCountByPagination" resultType="java.lang.Integer">
+		SELECT
+		COUNT(*)
+		FROM
+		DP_BASICPLAN T1
+		WHERE
+		T1.DP_RESP_PLANNAME
+		LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC
+	</select>
+
+</mapper>

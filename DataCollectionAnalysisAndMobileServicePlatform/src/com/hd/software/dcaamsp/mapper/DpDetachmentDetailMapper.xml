@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpDetachmentDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.DpDetachmentDetail" >
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_SQUADRONID" property="dpRespSquadronid" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ARMED_POLICE_SYSTEM" property="dpRespArmedPoliceSystem" jdbcType="VARCHAR" />
+    <result column="DP_RESP_PERSONNEL_TOTAL" property="dpRespPersonnelTotal" jdbcType="DECIMAL" />
+    <result column="DP_RESP_CADRE" property="dpRespCadre" jdbcType="DECIMAL" />
+    <result column="DP_RESP_SOLDIERS" property="dpRespSoldiers" jdbcType="DECIMAL" />
+    <result column="DP_RESP_FIREMAN" property="dpRespFireman" jdbcType="DECIMAL" />
+    <result column="DP_RESP_NUMBER_CARS" property="dpRespNumberCars" jdbcType="DECIMAL" />
+    <result column="DP_RESP_OUT_TRAIN" property="dpRespOutTrain" jdbcType="DECIMAL" />
+    <result column="DP_RESP_LIFT_CAR" property="dpRespLiftCar" jdbcType="DECIMAL" />
+    <result column="DP_RESP_DEDICATED_CAR" property="dpRespDedicatedCar" jdbcType="DECIMAL" />
+    <result column="DP_RESP_BATTLE_CAR" property="dpRespBattleCar" jdbcType="DECIMAL" />
+    <result column="DP_RESP_OTHER" property="dpRespOther" jdbcType="DECIMAL" />
+    <result column="DP_RESP_TOTAL_FOAM" property="dpRespTotalFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_A_FOAM" property="dpRespAFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_COMMON_PROTEIN_FOAM" property="dpRespCommonProteinFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_VEGETABLE_PROTEIN_FOAM" property="dpRespVegetableProteinFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ANTI_SOLUBLE_FOAM" property="dpRespAntiSolubleFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_WATER_FOAM" property="dpRespWaterFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FLUORINE_PROTEIN_FOAM" property="dpRespFluorineProteinFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_HIGH_EXPANSION_FOAM" property="dpRespHighExpansionFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_FIVEZERO_FOAM" property="dpRespFivezeroFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_DTE_FOAM" property="dpRespDteFoam" jdbcType="VARCHAR" />
+    <result column="DP_RESP_OTHER_FOARM" property="dpRespOtherFoarm" jdbcType="VARCHAR" />
+    <result column="DP_RESP_ABBREVIATED" property="dpRespAbbreviated" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_ID, DP_RESP_SQUADRONID, DP_RESP_ARMED_POLICE_SYSTEM, DP_RESP_PERSONNEL_TOTAL, 
+    DP_RESP_CADRE, DP_RESP_SOLDIERS, DP_RESP_FIREMAN, DP_RESP_NUMBER_CARS, DP_RESP_OUT_TRAIN, 
+    DP_RESP_LIFT_CAR, DP_RESP_DEDICATED_CAR, DP_RESP_BATTLE_CAR, DP_RESP_OTHER, DP_RESP_TOTAL_FOAM, 
+    DP_RESP_A_FOAM, DP_RESP_COMMON_PROTEIN_FOAM, DP_RESP_VEGETABLE_PROTEIN_FOAM, DP_RESP_ANTI_SOLUBLE_FOAM, 
+    DP_RESP_WATER_FOAM, DP_RESP_FLUORINE_PROTEIN_FOAM, DP_RESP_HIGH_EXPANSION_FOAM, DP_RESP_FIVEZERO_FOAM, 
+    DP_RESP_DTE_FOAM, DP_RESP_OTHER_FOARM, DP_RESP_ABBREVIATED
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.DpDetachmentDetailExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DP_DETACHMENT_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.DpDetachmentDetailExample" >
+    delete from DP_DETACHMENT_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.DpDetachmentDetail" >
+    insert into DP_DETACHMENT_DETAIL (DP_RESP_ID, DP_RESP_SQUADRONID, DP_RESP_ARMED_POLICE_SYSTEM, 
+      DP_RESP_PERSONNEL_TOTAL, DP_RESP_CADRE, DP_RESP_SOLDIERS, 
+      DP_RESP_FIREMAN, DP_RESP_NUMBER_CARS, DP_RESP_OUT_TRAIN, 
+      DP_RESP_LIFT_CAR, DP_RESP_DEDICATED_CAR, DP_RESP_BATTLE_CAR, 
+      DP_RESP_OTHER, DP_RESP_TOTAL_FOAM, DP_RESP_A_FOAM, 
+      DP_RESP_COMMON_PROTEIN_FOAM, DP_RESP_VEGETABLE_PROTEIN_FOAM, 
+      DP_RESP_ANTI_SOLUBLE_FOAM, DP_RESP_WATER_FOAM, 
+      DP_RESP_FLUORINE_PROTEIN_FOAM, DP_RESP_HIGH_EXPANSION_FOAM, 
+      DP_RESP_FIVEZERO_FOAM, DP_RESP_DTE_FOAM, DP_RESP_OTHER_FOARM, 
+      DP_RESP_ABBREVIATED)
+    values (#{dpRespId,jdbcType=DECIMAL}, #{dpRespSquadronid,jdbcType=VARCHAR}, #{dpRespArmedPoliceSystem,jdbcType=VARCHAR}, 
+      #{dpRespPersonnelTotal,jdbcType=DECIMAL}, #{dpRespCadre,jdbcType=DECIMAL}, #{dpRespSoldiers,jdbcType=DECIMAL}, 
+      #{dpRespFireman,jdbcType=DECIMAL}, #{dpRespNumberCars,jdbcType=DECIMAL}, #{dpRespOutTrain,jdbcType=DECIMAL}, 
+      #{dpRespLiftCar,jdbcType=DECIMAL}, #{dpRespDedicatedCar,jdbcType=DECIMAL}, #{dpRespBattleCar,jdbcType=DECIMAL}, 
+      #{dpRespOther,jdbcType=DECIMAL}, #{dpRespTotalFoam,jdbcType=VARCHAR}, #{dpRespAFoam,jdbcType=VARCHAR}, 
+      #{dpRespCommonProteinFoam,jdbcType=VARCHAR}, #{dpRespVegetableProteinFoam,jdbcType=VARCHAR}, 
+      #{dpRespAntiSolubleFoam,jdbcType=VARCHAR}, #{dpRespWaterFoam,jdbcType=VARCHAR}, 
+      #{dpRespFluorineProteinFoam,jdbcType=VARCHAR}, #{dpRespHighExpansionFoam,jdbcType=VARCHAR}, 
+      #{dpRespFivezeroFoam,jdbcType=VARCHAR}, #{dpRespDteFoam,jdbcType=VARCHAR}, #{dpRespOtherFoarm,jdbcType=VARCHAR}, 
+      #{dpRespAbbreviated,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.DpDetachmentDetail" >
+    insert into DP_DETACHMENT_DETAIL
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        DP_RESP_ID,
+      </if>
+      <if test="dpRespSquadronid != null" >
+        DP_RESP_SQUADRONID,
+      </if>
+      <if test="dpRespArmedPoliceSystem != null" >
+        DP_RESP_ARMED_POLICE_SYSTEM,
+      </if>
+      <if test="dpRespPersonnelTotal != null" >
+        DP_RESP_PERSONNEL_TOTAL,
+      </if>
+      <if test="dpRespCadre != null" >
+        DP_RESP_CADRE,
+      </if>
+      <if test="dpRespSoldiers != null" >
+        DP_RESP_SOLDIERS,
+      </if>
+      <if test="dpRespFireman != null" >
+        DP_RESP_FIREMAN,
+      </if>
+      <if test="dpRespNumberCars != null" >
+        DP_RESP_NUMBER_CARS,
+      </if>
+      <if test="dpRespOutTrain != null" >
+        DP_RESP_OUT_TRAIN,
+      </if>
+      <if test="dpRespLiftCar != null" >
+        DP_RESP_LIFT_CAR,
+      </if>
+      <if test="dpRespDedicatedCar != null" >
+        DP_RESP_DEDICATED_CAR,
+      </if>
+      <if test="dpRespBattleCar != null" >
+        DP_RESP_BATTLE_CAR,
+      </if>
+      <if test="dpRespOther != null" >
+        DP_RESP_OTHER,
+      </if>
+      <if test="dpRespTotalFoam != null" >
+        DP_RESP_TOTAL_FOAM,
+      </if>
+      <if test="dpRespAFoam != null" >
+        DP_RESP_A_FOAM,
+      </if>
+      <if test="dpRespCommonProteinFoam != null" >
+        DP_RESP_COMMON_PROTEIN_FOAM,
+      </if>
+      <if test="dpRespVegetableProteinFoam != null" >
+        DP_RESP_VEGETABLE_PROTEIN_FOAM,
+      </if>
+      <if test="dpRespAntiSolubleFoam != null" >
+        DP_RESP_ANTI_SOLUBLE_FOAM,
+      </if>
+      <if test="dpRespWaterFoam != null" >
+        DP_RESP_WATER_FOAM,
+      </if>
+      <if test="dpRespFluorineProteinFoam != null" >
+        DP_RESP_FLUORINE_PROTEIN_FOAM,
+      </if>
+      <if test="dpRespHighExpansionFoam != null" >
+        DP_RESP_HIGH_EXPANSION_FOAM,
+      </if>
+      <if test="dpRespFivezeroFoam != null" >
+        DP_RESP_FIVEZERO_FOAM,
+      </if>
+      <if test="dpRespDteFoam != null" >
+        DP_RESP_DTE_FOAM,
+      </if>
+      <if test="dpRespOtherFoarm != null" >
+        DP_RESP_OTHER_FOARM,
+      </if>
+      <if test="dpRespAbbreviated != null" >
+        DP_RESP_ABBREVIATED,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        #{dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespSquadronid != null" >
+        #{dpRespSquadronid,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespArmedPoliceSystem != null" >
+        #{dpRespArmedPoliceSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespPersonnelTotal != null" >
+        #{dpRespPersonnelTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespCadre != null" >
+        #{dpRespCadre,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespSoldiers != null" >
+        #{dpRespSoldiers,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespFireman != null" >
+        #{dpRespFireman,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespNumberCars != null" >
+        #{dpRespNumberCars,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespOutTrain != null" >
+        #{dpRespOutTrain,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespLiftCar != null" >
+        #{dpRespLiftCar,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespDedicatedCar != null" >
+        #{dpRespDedicatedCar,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespBattleCar != null" >
+        #{dpRespBattleCar,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespOther != null" >
+        #{dpRespOther,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespTotalFoam != null" >
+        #{dpRespTotalFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAFoam != null" >
+        #{dpRespAFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespCommonProteinFoam != null" >
+        #{dpRespCommonProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespVegetableProteinFoam != null" >
+        #{dpRespVegetableProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAntiSolubleFoam != null" >
+        #{dpRespAntiSolubleFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespWaterFoam != null" >
+        #{dpRespWaterFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespFluorineProteinFoam != null" >
+        #{dpRespFluorineProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespHighExpansionFoam != null" >
+        #{dpRespHighExpansionFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespFivezeroFoam != null" >
+        #{dpRespFivezeroFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespDteFoam != null" >
+        #{dpRespDteFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespOtherFoarm != null" >
+        #{dpRespOtherFoarm,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespAbbreviated != null" >
+        #{dpRespAbbreviated,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.DpDetachmentDetailExample" resultType="java.lang.Integer" >
+    select count(*) from DP_DETACHMENT_DETAIL
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DP_DETACHMENT_DETAIL
+    <set >
+      <if test="record.dpRespId != null" >
+        DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespSquadronid != null" >
+        DP_RESP_SQUADRONID = #{record.dpRespSquadronid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespArmedPoliceSystem != null" >
+        DP_RESP_ARMED_POLICE_SYSTEM = #{record.dpRespArmedPoliceSystem,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespPersonnelTotal != null" >
+        DP_RESP_PERSONNEL_TOTAL = #{record.dpRespPersonnelTotal,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespCadre != null" >
+        DP_RESP_CADRE = #{record.dpRespCadre,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespSoldiers != null" >
+        DP_RESP_SOLDIERS = #{record.dpRespSoldiers,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespFireman != null" >
+        DP_RESP_FIREMAN = #{record.dpRespFireman,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespNumberCars != null" >
+        DP_RESP_NUMBER_CARS = #{record.dpRespNumberCars,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespOutTrain != null" >
+        DP_RESP_OUT_TRAIN = #{record.dpRespOutTrain,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespLiftCar != null" >
+        DP_RESP_LIFT_CAR = #{record.dpRespLiftCar,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespDedicatedCar != null" >
+        DP_RESP_DEDICATED_CAR = #{record.dpRespDedicatedCar,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespBattleCar != null" >
+        DP_RESP_BATTLE_CAR = #{record.dpRespBattleCar,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespOther != null" >
+        DP_RESP_OTHER = #{record.dpRespOther,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespTotalFoam != null" >
+        DP_RESP_TOTAL_FOAM = #{record.dpRespTotalFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAFoam != null" >
+        DP_RESP_A_FOAM = #{record.dpRespAFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespCommonProteinFoam != null" >
+        DP_RESP_COMMON_PROTEIN_FOAM = #{record.dpRespCommonProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespVegetableProteinFoam != null" >
+        DP_RESP_VEGETABLE_PROTEIN_FOAM = #{record.dpRespVegetableProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAntiSolubleFoam != null" >
+        DP_RESP_ANTI_SOLUBLE_FOAM = #{record.dpRespAntiSolubleFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespWaterFoam != null" >
+        DP_RESP_WATER_FOAM = #{record.dpRespWaterFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespFluorineProteinFoam != null" >
+        DP_RESP_FLUORINE_PROTEIN_FOAM = #{record.dpRespFluorineProteinFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespHighExpansionFoam != null" >
+        DP_RESP_HIGH_EXPANSION_FOAM = #{record.dpRespHighExpansionFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespFivezeroFoam != null" >
+        DP_RESP_FIVEZERO_FOAM = #{record.dpRespFivezeroFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespDteFoam != null" >
+        DP_RESP_DTE_FOAM = #{record.dpRespDteFoam,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespOtherFoarm != null" >
+        DP_RESP_OTHER_FOARM = #{record.dpRespOtherFoarm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespAbbreviated != null" >
+        DP_RESP_ABBREVIATED = #{record.dpRespAbbreviated,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DP_DETACHMENT_DETAIL
+    set DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      DP_RESP_SQUADRONID = #{record.dpRespSquadronid,jdbcType=VARCHAR},
+      DP_RESP_ARMED_POLICE_SYSTEM = #{record.dpRespArmedPoliceSystem,jdbcType=VARCHAR},
+      DP_RESP_PERSONNEL_TOTAL = #{record.dpRespPersonnelTotal,jdbcType=DECIMAL},
+      DP_RESP_CADRE = #{record.dpRespCadre,jdbcType=DECIMAL},
+      DP_RESP_SOLDIERS = #{record.dpRespSoldiers,jdbcType=DECIMAL},
+      DP_RESP_FIREMAN = #{record.dpRespFireman,jdbcType=DECIMAL},
+      DP_RESP_NUMBER_CARS = #{record.dpRespNumberCars,jdbcType=DECIMAL},
+      DP_RESP_OUT_TRAIN = #{record.dpRespOutTrain,jdbcType=DECIMAL},
+      DP_RESP_LIFT_CAR = #{record.dpRespLiftCar,jdbcType=DECIMAL},
+      DP_RESP_DEDICATED_CAR = #{record.dpRespDedicatedCar,jdbcType=DECIMAL},
+      DP_RESP_BATTLE_CAR = #{record.dpRespBattleCar,jdbcType=DECIMAL},
+      DP_RESP_OTHER = #{record.dpRespOther,jdbcType=DECIMAL},
+      DP_RESP_TOTAL_FOAM = #{record.dpRespTotalFoam,jdbcType=VARCHAR},
+      DP_RESP_A_FOAM = #{record.dpRespAFoam,jdbcType=VARCHAR},
+      DP_RESP_COMMON_PROTEIN_FOAM = #{record.dpRespCommonProteinFoam,jdbcType=VARCHAR},
+      DP_RESP_VEGETABLE_PROTEIN_FOAM = #{record.dpRespVegetableProteinFoam,jdbcType=VARCHAR},
+      DP_RESP_ANTI_SOLUBLE_FOAM = #{record.dpRespAntiSolubleFoam,jdbcType=VARCHAR},
+      DP_RESP_WATER_FOAM = #{record.dpRespWaterFoam,jdbcType=VARCHAR},
+      DP_RESP_FLUORINE_PROTEIN_FOAM = #{record.dpRespFluorineProteinFoam,jdbcType=VARCHAR},
+      DP_RESP_HIGH_EXPANSION_FOAM = #{record.dpRespHighExpansionFoam,jdbcType=VARCHAR},
+      DP_RESP_FIVEZERO_FOAM = #{record.dpRespFivezeroFoam,jdbcType=VARCHAR},
+      DP_RESP_DTE_FOAM = #{record.dpRespDteFoam,jdbcType=VARCHAR},
+      DP_RESP_OTHER_FOARM = #{record.dpRespOtherFoarm,jdbcType=VARCHAR},
+      DP_RESP_ABBREVIATED = #{record.dpRespAbbreviated,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpIndustrialparkMapperCustom">
+	<resultMap id="ParkMap"
+		type="com.hd.software.dcaamsp.po.DpIndustrialparkCustom">
+		<result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+		<result column="DP_RESP_PARKNAME" property="dpRespParkname"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_PARKID" property="dpRespParkid"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_SUMMARY" property="dpRespSummary"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_ADDRESS" property="dpRespAddress"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_REMARK" property="dpRespRemark"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_GIS_X" property="dpRespGisX" jdbcType="VARCHAR" />
+		<result column="DP_RESP_GIS_Y" property="dpRespGisY" jdbcType="VARCHAR" />
+		<result column="DP_RESP_DETACHMENTID" property="dpRespDetachmentid"
+			jdbcType="VARCHAR" />
+		<result column="DP_RESP_SQUADRON" property="dpRespSquadronName"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<select id="findParkByPagination" resultMap="ParkMap">
+		SELECT * FROM(
+		SELECT ROWNUM RN,T1.*,T2.DP_RESP_SQUADRONNAME DP_RESP_SQUADRON FROM
+		DP_INDUSTRIALPARK T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_PARKNAME LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC) T3
+		WHERE
+		T3.RN
+		BETWEEN
+		#{startIndex} AND #{endIndex}
+	</select>
+
+	<select id="findParkCountByPagination" resultType="java.lang.Integer">
+		SELECT COUNT(*) FROM
+		DP_INDUSTRIALPARK T1
+		LEFT JOIN
+		DP_FIRESQUADRON T2 ON
+		T1.DP_RESP_DETACHMENTID=T2.DP_RESP_SQUADRONID WHERE
+		T1.DP_RESP_PARKNAME LIKE
+		'%${unitName}%'
+		AND T1.DP_RESP_DETACHMENTID IN
+		(SELECT
+		DP_RESP_SQUADRONID FROM
+		DP_FIRESQUADRON CONNECT BY PRIOR
+		DP_RESP_SQUADRONID=DP_RESP_PARENTID START WITH
+		DP_RESP_SQUADRONID=#{unitCode}) ORDER BY T1.DP_RESP_ID ASC
+	</select>
+</mapper>

@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hd.software.dcaamsp.mapper.DpSmallplacesMapper" >
+  <resultMap id="BaseResultMap" type="com.hd.software.dcaamsp.po.DpSmallplaces" >
+    <result column="DP_RESP_ID" property="dpRespId" jdbcType="DECIMAL" />
+    <result column="DP_RESP_UNITCODE" property="dpRespUnitcode" jdbcType="VARCHAR" />
+    <result column="DP_RESP_UNITNAME" property="dpRespUnitname" jdbcType="VARCHAR" />
+    <result column="DP_RESP_UNITPHONE" property="dpRespUnitphone" jdbcType="VARCHAR" />
+    <result column="DP_RESP_UNITADDRESS" property="dpRespUnitaddress" jdbcType="VARCHAR" />
+    <result column="DP_RESP_X" property="dpRespX" jdbcType="VARCHAR" />
+    <result column="DP_RESP_Y" property="dpRespY" jdbcType="VARCHAR" />
+    <result column="DP_RESP_CORPORATION" property="dpRespCorporation" jdbcType="VARCHAR" />
+    <result column="DP_RESP_CORPORATIONPHONE" property="dpRespCorporationphone" jdbcType="VARCHAR" />
+    <result column="DP_RESP_LIABLE" property="dpRespLiable" jdbcType="VARCHAR" />
+    <result column="DP_RESP_LIABLEPHONE" property="dpRespLiablephone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    DP_RESP_ID, DP_RESP_UNITCODE, DP_RESP_UNITNAME, DP_RESP_UNITPHONE, DP_RESP_UNITADDRESS, 
+    DP_RESP_X, DP_RESP_Y, DP_RESP_CORPORATION, DP_RESP_CORPORATIONPHONE, DP_RESP_LIABLE, 
+    DP_RESP_LIABLEPHONE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DP_SMALLPLACES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesExample" >
+    delete from DP_SMALLPLACES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hd.software.dcaamsp.po.DpSmallplaces" >
+    insert into DP_SMALLPLACES (DP_RESP_ID, DP_RESP_UNITCODE, DP_RESP_UNITNAME, 
+      DP_RESP_UNITPHONE, DP_RESP_UNITADDRESS, DP_RESP_X, 
+      DP_RESP_Y, DP_RESP_CORPORATION, DP_RESP_CORPORATIONPHONE, 
+      DP_RESP_LIABLE, DP_RESP_LIABLEPHONE)
+    values (#{dpRespId,jdbcType=DECIMAL}, #{dpRespUnitcode,jdbcType=VARCHAR}, #{dpRespUnitname,jdbcType=VARCHAR}, 
+      #{dpRespUnitphone,jdbcType=VARCHAR}, #{dpRespUnitaddress,jdbcType=VARCHAR}, #{dpRespX,jdbcType=VARCHAR}, 
+      #{dpRespY,jdbcType=VARCHAR}, #{dpRespCorporation,jdbcType=VARCHAR}, #{dpRespCorporationphone,jdbcType=VARCHAR}, 
+      #{dpRespLiable,jdbcType=VARCHAR}, #{dpRespLiablephone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.hd.software.dcaamsp.po.DpSmallplaces" >
+    insert into DP_SMALLPLACES
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        DP_RESP_ID,
+      </if>
+      <if test="dpRespUnitcode != null" >
+        DP_RESP_UNITCODE,
+      </if>
+      <if test="dpRespUnitname != null" >
+        DP_RESP_UNITNAME,
+      </if>
+      <if test="dpRespUnitphone != null" >
+        DP_RESP_UNITPHONE,
+      </if>
+      <if test="dpRespUnitaddress != null" >
+        DP_RESP_UNITADDRESS,
+      </if>
+      <if test="dpRespX != null" >
+        DP_RESP_X,
+      </if>
+      <if test="dpRespY != null" >
+        DP_RESP_Y,
+      </if>
+      <if test="dpRespCorporation != null" >
+        DP_RESP_CORPORATION,
+      </if>
+      <if test="dpRespCorporationphone != null" >
+        DP_RESP_CORPORATIONPHONE,
+      </if>
+      <if test="dpRespLiable != null" >
+        DP_RESP_LIABLE,
+      </if>
+      <if test="dpRespLiablephone != null" >
+        DP_RESP_LIABLEPHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="dpRespId != null" >
+        #{dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="dpRespUnitcode != null" >
+        #{dpRespUnitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespUnitname != null" >
+        #{dpRespUnitname,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespUnitphone != null" >
+        #{dpRespUnitphone,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespUnitaddress != null" >
+        #{dpRespUnitaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespX != null" >
+        #{dpRespX,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespY != null" >
+        #{dpRespY,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespCorporation != null" >
+        #{dpRespCorporation,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespCorporationphone != null" >
+        #{dpRespCorporationphone,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespLiable != null" >
+        #{dpRespLiable,jdbcType=VARCHAR},
+      </if>
+      <if test="dpRespLiablephone != null" >
+        #{dpRespLiablephone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hd.software.dcaamsp.po.DpSmallplacesExample" resultType="java.lang.Integer" >
+    select count(*) from DP_SMALLPLACES
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DP_SMALLPLACES
+    <set >
+      <if test="record.dpRespId != null" >
+        DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dpRespUnitcode != null" >
+        DP_RESP_UNITCODE = #{record.dpRespUnitcode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespUnitname != null" >
+        DP_RESP_UNITNAME = #{record.dpRespUnitname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespUnitphone != null" >
+        DP_RESP_UNITPHONE = #{record.dpRespUnitphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespUnitaddress != null" >
+        DP_RESP_UNITADDRESS = #{record.dpRespUnitaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespX != null" >
+        DP_RESP_X = #{record.dpRespX,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespY != null" >
+        DP_RESP_Y = #{record.dpRespY,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespCorporation != null" >
+        DP_RESP_CORPORATION = #{record.dpRespCorporation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespCorporationphone != null" >
+        DP_RESP_CORPORATIONPHONE = #{record.dpRespCorporationphone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespLiable != null" >
+        DP_RESP_LIABLE = #{record.dpRespLiable,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dpRespLiablephone != null" >
+        DP_RESP_LIABLEPHONE = #{record.dpRespLiablephone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DP_SMALLPLACES
+    set DP_RESP_ID = #{record.dpRespId,jdbcType=DECIMAL},
+      DP_RESP_UNITCODE = #{record.dpRespUnitcode,jdbcType=VARCHAR},
+      DP_RESP_UNITNAME = #{record.dpRespUnitname,jdbcType=VARCHAR},
+      DP_RESP_UNITPHONE = #{record.dpRespUnitphone,jdbcType=VARCHAR},
+      DP_RESP_UNITADDRESS = #{record.dpRespUnitaddress,jdbcType=VARCHAR},
+      DP_RESP_X = #{record.dpRespX,jdbcType=VARCHAR},
+      DP_RESP_Y = #{record.dpRespY,jdbcType=VARCHAR},
+      DP_RESP_CORPORATION = #{record.dpRespCorporation,jdbcType=VARCHAR},
+      DP_RESP_CORPORATIONPHONE = #{record.dpRespCorporationphone,jdbcType=VARCHAR},
+      DP_RESP_LIABLE = #{record.dpRespLiable,jdbcType=VARCHAR},
+      DP_RESP_LIABLEPHONE = #{record.dpRespLiablephone,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
